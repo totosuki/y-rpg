@@ -1,0 +1,46 @@
+{
+    "skill_change": {
+        "クラスチェンジ": {
+            "cool": 60
+        }
+    },
+    "skill_self": {
+        "ラストリゾート": {
+            "atk": 1.2,
+            "rate": 0,
+            "leave": 1,
+            "adjust": 51,
+            "cool": 2000
+        }
+    },
+    "skill_damage": {
+        "スラッシュ": {
+            "atk": 1,
+            "rate": 15,
+            "cool": 90
+        },
+        "スイフトスラッシュ": {
+            "atk": 1,
+            "rate": 0,
+            "cool": 77
+        },
+        "突進": {
+            "atk": 1,
+            "rate": 30,
+            "cool": 130
+        },
+        "切り裂く": {
+            "atk": 1.1,
+            "rate": 40,
+            "cool": 140
+        }
+    },
+    "skill_effect": {
+        "シャドウファング": {
+            "type": "poison",
+            "strength": 3,
+            "turn": 10,
+            "cool": 50
+        }
+    }
+}
