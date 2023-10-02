@@ -19,12 +19,6 @@ public class BattleLoader : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void LoadBattle()
     {
         gameObject.SetActive(true);

@@ -4,9 +4,11 @@ using Fungus;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
-{
+{   
     private NPCAnimController animController;
     private NPCController controller;
+
+    private GameObject player;
 
     private bool chaseFlag = true;
     private bool collided = false;
@@ -14,6 +16,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player");
         animController = GetComponent<NPCAnimController>();
         controller = GetComponent<NPCController>();
     }
@@ -86,7 +89,7 @@ public class EnemyController : MonoBehaviour
         }
 
         Vector2 enemyVector = transform.position;
-        Vector2 playerVector = controller.player.transform.position;
+        Vector2 playerVector = player.transform.position;
 
         int angle = GetAngle(enemyVector, playerVector);
 
