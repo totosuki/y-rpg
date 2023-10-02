@@ -4,79 +4,70 @@ using UnityEngine;
 using TMPro;
 using Fungus;
 
-// 注意：冗長オブザイヤーなコードしてます。
-//      でもこれで動くから許して
-
+/// <summary>
+/// InputField・GetInputコマンドなどの補助を行う
+/// </summary>
 public class InputManager : MonoBehaviour
 {
     // fungus
     [SerializeField]
     private Flowchart flowchart;
 
-    [SerializeField]
     private GameObject input;
     private TMP_InputField _inputField;
+    private TMP_Text placeholder;
 
-    [SerializeField]
-    private GameObject player;
-    private PlayerController plc;
-    private Player pl;
-
-    [SerializeField]
-    private GameObject npc;
-    private NPCController npcController;
+    private string varKey;
+    private string message;
 
     void Start()
     {
-        plc = player.GetComponent<PlayerController>();
-        pl = player.GetComponent<Player>();
-        npcController = npc.GetComponent<NPCController>();
-
+        input = gameObject;
         _inputField = input.GetComponent<TMP_InputField>();
+        placeholder = _inputField.GetComponentInChildren<TMP_Text>();
+        
         InitInput();
-    }
-
-    public void GetInput()
-    {
-        string name = _inputField.text;
-
-        // 空文字列は返却
-        if (name == "") 
-        {
-            RetryInput();
-            return;
-        }
-
-        InitInput();
-        flowchart.SetStringVariable("player_name", name);
-        npcController.message = "register";
-        npcController.StartTalk();
-    }
-
-    public void RetryInput()
-    {
-        InitInput();
-        npcController.message = "retry";
-        npcController.StartTalk();
-    }
-
-    public void SetName()
-    {
-        pl._name = flowchart.GetStringVariable("player_name");
-        npcController.message = "registerCompleted";
+        input.SetActive(false);
     }
 
     void InitInput()
     {
-        input.SetActive(false);
         _inputField.text = "";
     }
 
-    void NameInput()
+    public void StartInput()
     {
-        npcController.DisableCallback();
-
-        npcController.DisableCanActivate();
+        InitInput();
+        // 表示
         input.SetActive(true);
+    }
+
+    public void EndInput()
+    {   
+        // 非表示
+        input.SetActive(false);
+        
+        if (varKey == null) return;
+
+        string value = _inputField.text;
+        flowchart.SetStringVariable(varKey, value);
+
+        // メッセージで終了を通知
+        flowchart.SendFungusMessage(message);
+    }
+
+    public void SetPlaceholder(string text)
+    {
+        placeholder.text = text;
+    }
+
+    public void SetVarKey(string key)
+    {
+        varKey = key;
+    }
+
+    public void SetMessage(string msg)
+    {
+        message = msg;
     }
 }

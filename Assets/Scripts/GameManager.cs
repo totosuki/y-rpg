@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     private GameObject player;
+    private PlayerController plController;
     private GameObject mainCamera;
 
     private GameObject adventurer;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
+        plController = player.GetComponent<PlayerController>();
         mainCamera = GameObject.Find("Main Camera");
         adventurer = GameObject.Find("Adventurer");
         pachi = GameObject.Find("Pachi");
@@ -27,16 +29,16 @@ public class GameManager : MonoBehaviour
         xpBar = GameObject.Find("XPBar");
         tutorialUI = GameObject.Find("Tutorial");
 
-        player.SetActive(false);
+        plController.Hide();
         adventurer.SetActive(false);
         saveMenu.SetActive(false);
         xpBar.SetActive(false);
-        tutorialUI.SetActive(false);
+        // tutorialUI.SetActive(false);
     }
 
     public void FinishPrologue()
     {
-        player.GetComponent<PlayerController>().Init();
+        plController.Show();
         CameraController camera = mainCamera.GetComponent<CameraController>();
         camera.StopOpening();
         saveMenu.SetActive(true);
@@ -45,8 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void TalkToAdventurer()
     {
-        adventurer.transform.position = player.transform.position + new Vector3(5, 0, 0);
         adventurer.SetActive(true);
-        adventurer.GetComponent<NPCAnimController>().Walk("left", 1.3f);
+        // adventurer.GetComponent<NPCAnimController>().Walk("left", 1.2f);
     }
 }
