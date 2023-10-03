@@ -1,30 +1,24 @@
 using UnityEngine;
 
-public class CameraController : MonoBehaviour
-{
+public class CameraController : MonoBehaviour {
     private bool opening = true;
 
-    void Update()
-    {
+    void Update() {
         if (opening) ShowMap();
     }
 
-    public void FollowObject(GameObject targetObject)
-    {
+    public void FollowObject(GameObject targetObject) {
         // オブジェクトを追従させる
         transform.parent = targetObject.transform;
         transform.localPosition = new Vector3(0, 0, -10);
     }
 
-    public void StopOpening()
-    {
+    public void StopOpening() {
         opening = false;
     }
 
-    void ShowMap()
-    {
-        if (transform.position.y >= 3.0f)
-        {
+    void ShowMap() {
+        if (transform.position.y >= 3.0f) {
             StopOpening();
         }   
 

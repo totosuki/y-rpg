@@ -4,17 +4,13 @@
 using UnityEngine;
 
 
-namespace Fungus
-{
+namespace Fungus {
     /// <summary>
     /// NPCのmessageを編集
     /// </summary>
-    [CommandInfo("NPC", 
-                 "Set Message", 
-                 "Set NPC Message")]
+    [CommandInfo("NPC", "Set Message", "Set NPC Message")]
     [AddComponentMenu("")]
-    public class SetMessage : Command
-    {
+    public class SetMessage : Command {
         [Tooltip("Target monobehavior which contains the method we want to call")]
         [SerializeField] protected GameObject targetObject;
 
@@ -27,59 +23,47 @@ namespace Fungus
         // !Fungus
         private NPCController npcController;
 
-        protected virtual void SetTheMessage()
-        {
+        protected virtual void SetTheMessage() {
             npcController.message = newMessage;
         }
 
         #region Public members
 
-        public override void OnEnter()
-        {
+        public override void OnEnter() {
             npcController = targetObject.GetComponent<NPCController>();
 
-            if (targetObject == null ||
-                npcController == null ||
-                newMessage.Length == 0)
-            {
+            if (targetObject == null || npcController == null || newMessage.Length == 0) {
                 Continue();
                 return;
             }
 
-            if (Mathf.Approximately(delay, 0f))
-            {
+            if (Mathf.Approximately(delay, 0f)) {
                 SetTheMessage();
             }
-            else
-            {
+            else {
                 Invoke("SetTheMessage", delay);
             }
 
             Continue();
         }
 
-        public override string GetSummary()
-        {
-            if (targetObject == null)
-            {
+        public override string GetSummary() {
+            if (targetObject == null) {
                 return "Error: No target GameObject specified";
             }
 
-            if (npcController == null)
-            {
+            if (npcController == null) {
                 return "Error: Target GameObject is not NPC";
             }
 
-            if (newMessage.Length == 0)
-            {
+            if (newMessage.Length == 0) {
                 return "Error: No message specified";
             }
 
             return targetObject.name + " : " + newMessage;
         }
         
-        public override Color GetButtonColor()
-        {
+        public override Color GetButtonColor() {
             return new Color32(235, 191, 217, 255);
         }
 

@@ -1,7 +1,6 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
-{
+public class Item : MonoBehaviour {
     [SerializeField]
     private bool discovery = false; // 発見したか？(最初は持っていない為だが、保存データ参照にしないとセーブの意味がない)
     [SerializeField]
@@ -12,15 +11,16 @@ public class Item : MonoBehaviour
     private GameObject obj;
 
 
-    void Start(){
+    void Start() {
         gameObject.SetActive(discovery);
     }
 
-    void getItem(){
+    void getItem() {
         discovery = true;
         gameObject.SetActive(discovery);
     }
-    public void click(){
+    
+    public void click() {
         obj.SetActive(true);
     }
 }

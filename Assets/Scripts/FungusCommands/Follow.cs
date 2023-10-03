@@ -3,17 +3,13 @@
 
 using UnityEngine;
 
-namespace Fungus
-{
+namespace Fungus {
     /// <summary>
     /// 指定されたGameObjectの視点にカメラを固定
     /// </summary>
-    [CommandInfo("Camera", 
-                 "Follow",
-                 "Follow the specified GameObject")]
+    [CommandInfo("Camera", "Follow", "Follow the specified GameObject")]
     [AddComponentMenu("")]
-    public class Follow : Command 
-    {
+    public class Follow : Command {
         [Tooltip("Target GameObject we want to follow")]
         [SerializeField] protected GameObject targetObject;
 
@@ -22,57 +18,45 @@ namespace Fungus
 
         private CameraController cameraController;
 
-        protected virtual void FollowTheObject()
-        {
+        protected virtual void FollowTheObject() {
             cameraController.FollowObject(targetObject);
         }
 
         #region Public members
 
-        public virtual void Start() 
-        {
-            if (targetCamera != null)
-            {
+        public virtual void Start() {
+            if (targetCamera != null) {
                 cameraController = targetCamera.GetComponent<CameraController>();
             }
-            else
-            {
+            else {
                 // スキップ
                 Continue();
             }
         }
 
-        public override void OnEnter()
-        {
-            if (targetCamera == null ||
-                targetObject == null)
-            {
+        public override void OnEnter() {
+            if (targetCamera == null || targetObject == null) {
                 Continue();
                 return;
             }
 
             FollowTheObject();
-            
             Continue();
         }
 
-        public override string GetSummary()
-        {
-            if (targetObject == null)
-            {
+        public override string GetSummary() {
+            if (targetObject == null) {
                 return "Error: No GameObject specified";
             }
 
-            if (targetCamera == null)
-            {
+            if (targetCamera == null) {
                 return "Error: No Camera specified";
             }
 
             return targetCamera.name + " Follows " + targetObject.name;
         }
 
-        public override Color GetButtonColor()
-        {
+        public override Color GetButtonColor() {
             return new Color32(216, 228, 170, 255);
         }
 

@@ -5,8 +5,7 @@ using Fungus;
 /// <summary>
 /// InputField・GetInputコマンドなどの補助を行う
 /// </summary>
-public class InputManager : MonoBehaviour
-{
+public class InputManager : MonoBehaviour {
     // fungus
     [SerializeField]
     private Flowchart flowchart;
@@ -18,8 +17,7 @@ public class InputManager : MonoBehaviour
     private string varKey;
     private string message;
 
-    void Start()
-    {
+    void Start() {
         input = gameObject;
         _inputField = input.GetComponent<TMP_InputField>();
         placeholder = _inputField.GetComponentInChildren<TMP_Text>();
@@ -28,24 +26,23 @@ public class InputManager : MonoBehaviour
         input.SetActive(false);
     }
 
-    void InitInput()
-    {
+    void InitInput() {
         _inputField.text = "";
     }
 
-    public void StartInput()
-    {
+    public void StartInput() {
         InitInput();
         // 表示
         input.SetActive(true);
     }
 
-    public void EndInput()
-    {   
+    public void EndInput() {
         // 非表示
         input.SetActive(false);
         
-        if (varKey == null) return;
+        if (varKey == null) {
+            return;
+        }
 
         string value = _inputField.text;
         flowchart.SetStringVariable(varKey, value);
@@ -54,18 +51,15 @@ public class InputManager : MonoBehaviour
         flowchart.SendFungusMessage(message);
     }
 
-    public void SetPlaceholder(string text)
-    {
+    public void SetPlaceholder(string text) {
         placeholder.text = text;
     }
 
-    public void SetVarKey(string key)
-    {
+    public void SetVarKey(string key) {
         varKey = key;
     }
 
-    public void SetMessage(string msg)
-    {
+    public void SetMessage(string msg) {
         message = msg;
     }
 }

@@ -5,17 +5,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 
-namespace Fungus
-{
+namespace Fungus {
     /// <summary>
     /// NPCのmessageを編集
     /// </summary>
-    [CommandInfo("Entity", 
-                 "Move", 
-                 "Move target object to spesific position")]
+    [CommandInfo("Entity", "Move", "Move target object to spesific position")]
     [AddComponentMenu("")]
-    public class Move : Command
-    {
+    public class Move : Command {
         public enum TYPE {
             absolute,
             relative,
@@ -43,24 +39,18 @@ namespace Fungus
         private bool onEnable;
 
 
-        protected virtual Vector3 GetNewPosition()
-        {
+        protected virtual Vector3 GetNewPosition() {
             Vector3 pos;
 
-            if (type == TYPE.relative)
-            {
+            if (type == TYPE.relative) {
                 // 自身から見た相対座標を適用
                 pos = targetObject.transform.position + new Vector3(position.x,position.y);
-
             }
-            else if (type == TYPE.basedOnPlayer)
-            {
+            else if (type == TYPE.basedOnPlayer) {
                 // プレイヤーに対しての相対座標を適用
                 pos = player.transform.position + new Vector3(position.x,position.y);
-
             }
-            else
-            {
+            else {
                 // 絶対座標を適用
                 pos = position;
             }
@@ -68,8 +58,7 @@ namespace Fungus
             return pos;
         }
 
-        int GetFacingIdByVector2(Vector2 vector)
-        {
+        int GetFacingIdByVector2(Vector2 vector) {
             vector = SimplifyVector2(vector);
 
             Dictionary<Vector2, int> idList = new Dictionary<Vector2, int>() {
@@ -82,15 +71,12 @@ namespace Fungus
             return idList[vector];
         }
 
-        private Vector2 SimplifyVector2(Vector2 pos)
-        {
-            if (pos.x != 0)
-            {
+        private Vector2 SimplifyVector2(Vector2 pos) {
+            if (pos.x != 0) {
                 pos.x = Mathf.Sign(pos.x);
             }
             
-            if (pos.y != 0)
-            {
+            if (pos.y != 0) {
                 pos.y = Mathf.Sign(pos.y);
             }
             
@@ -99,40 +85,36 @@ namespace Fungus
 
         #region Public members
 
-        public virtual void Start()
-        {
+        public virtual void Start() {
             npcAnimController = targetObject.GetComponent<NPCAnimController>();
 
-            if (npcAnimController == null)
-            {
+            if (npcAnimController == null) {
                 Continue();
                 return;
             }
 
-            if (type == TYPE.basedOnPlayer)
-            {
+            if (type == TYPE.basedOnPlayer) {
                 player = GameObject.Find("Player");
             }
         }
 
-        public virtual void Update()
-        {
-            if (!onEnable) return;
+        public virtual void Update() {
+            if (onEnable == false) {
+                return;
+            }
             float diff = Time.timeSinceLevelLoad - startTime;
             float rate = diff / duration;
 
             targetObject.transform.position = Vector3.Lerp(startPosition, endPosition, rate);
 
-            if (rate >= 1.0f)
-            {
+            if (rate >= 1.0f) {
                 Continue();
                 onEnable = false;
                 npcAnimController.StopWalk();
             }
         }
 
-        public override void OnEnter()
-        {
+        public override void OnEnter() {
             startTime = Time.timeSinceLevelLoad;
 
             startPosition = targetObject.transform.position;
@@ -143,33 +125,26 @@ namespace Fungus
             Vector2 relatedPosition = endPosition - startPosition;
             npcAnimController.StartWalk(GetFacingIdByVector2(relatedPosition));
             
-            if (targetObject == null ||
-                npcAnimController == null ||
-                position == Vector2.zero)
-            {
+            if (targetObject == null || npcAnimController == null || position == Vector2.zero) {
                 Continue();
                 return;
             }
         }
 
-        public override string GetSummary()
-        {
-            if (targetObject == null)
-            {
+        public override string GetSummary() {
+            if (targetObject == null) {
                 return "Error: No target GameObject specified";
             }
 
             // 斜め移動は禁止
-            if (position.x != 0.0f && position.y != 0.0f)
-            {
+            if (position.x != 0.0f && position.y != 0.0f) {
                 return "Error: x or y should be 0";
             }
 
             return "Set " + targetObject.name + " Position to " + position.ToString();
         }
         
-        public override Color GetButtonColor()
-        {
+        public override Color GetButtonColor() {
             return new Color32(216, 228, 170, 255);
         }
 
