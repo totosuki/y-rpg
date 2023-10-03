@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Fungus;
+using UnityEditor.EditorTools;
 
 
 public class NPCController : MonoBehaviour
 {
+    [Tooltip("会話開始Fungusメッセージ")]
     public string message;
 
     // Fungus
-    [SerializeField]
-    private Flowchart flowchart;
+    [SerializeField] private Flowchart flowchart;
 
-    public GameObject player;
+    private GameObject player;
     private PlayerController plc;
 
-    [SerializeField]
-    private GameObject popup;
+    [SerializeField] private GameObject popup;
 
-    // 会話できるかどうか
-    [SerializeField]
-    private bool canTalk;
-    // 当たり判定への侵入をトリガーに会話を始めるかどうか
-    [SerializeField]
-    private bool FireOnCollision;
+    [Tooltip("会話できるかどうか")]
+    [SerializeField] private bool canTalk;
+
+    [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
+    [SerializeField] private bool FireOnCollision;
     
     public bool canActivate;
     public bool canCallback;
@@ -33,6 +32,7 @@ public class NPCController : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
         popup = transform.GetChild(0).gameObject;
     }
@@ -53,6 +53,20 @@ public class NPCController : MonoBehaviour
         {
             popup.SetActive(false);
         }
+    }
+
+    // Fungusを呼び出して会話を始める
+    IEnumerator Talk(Action callback)
+    {
+        isRunning = true;
+        canCallback = true;
+
+        flowchart.SendFungusMessage(message);
+        yield return new WaitUntil(() => flowchart.GetExecutingBlocks().Count == 0);
+
+        if (canCallback) callback();
+
+        isRunning = false;
     }
 
     public void StartTalk()
@@ -79,20 +93,6 @@ public class NPCController : MonoBehaviour
     public void DisableCanActivate()
     {
         canActivate = false;
-    }
-
-    // Fungusを呼び出して会話を始める
-    IEnumerator Talk(System.Action callback)
-    {
-        isRunning = true;
-        canCallback = true;
-
-        flowchart.SendFungusMessage(message);
-        yield return new WaitUntil(() => flowchart.GetExecutingBlocks().Count == 0);
-
-        if (canCallback) callback();
-
-        isRunning = false;
     }
 
     // 呼び出すと一回だけコールバックを無効化
