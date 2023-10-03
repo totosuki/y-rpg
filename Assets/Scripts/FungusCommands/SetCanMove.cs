@@ -14,7 +14,7 @@ namespace Fungus
     [AddComponentMenu("")]
     public class SetCanMove : Command 
     {
-        [Tooltip("Target GameObject we want to follow")]
+        [Tooltip("canMove flag")]
         [SerializeField] protected bool canMove = false;
 
         private GameObject player;
