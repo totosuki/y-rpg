@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Fungus;
-using UnityEditor.EditorTools;
 
 
 public class NPCController : MonoBehaviour
