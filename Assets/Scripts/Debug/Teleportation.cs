@@ -18,21 +18,19 @@ public class Teleportation : MonoBehaviour {
     }
 
     void Update() {
-
         if (Input.GetKeyDown(KeyCode.T)) {
             isCommand = true;
         }
 
         if (isCommand == true) {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) {
                 playerTransform.position = firstFloor;
+                isCommand = false;
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
+            else if (Input.GetKeyDown(KeyCode.Alpha2)) {
                 playerTransform.position = secondFloor;
+                isCommand = false;
             }
         }
-        
     }
 }
