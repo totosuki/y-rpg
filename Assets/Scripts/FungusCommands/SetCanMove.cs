@@ -3,32 +3,26 @@
 
 using UnityEngine;
 
-namespace Fungus
-{
+namespace Fungus {
     /// <summary>
     /// 指定されたGameObjectの視点にカメラを固定
     /// </summary>
-    [CommandInfo("Player", 
-                 "SetCanMove",
-                 "Set Player.canMove")]
+    [CommandInfo("Player", "SetCanMove", "Set Player.canMove")]
     [AddComponentMenu("")]
-    public class SetCanMove : Command 
-    {
+    public class SetCanMove : Command {
         [Tooltip("canMove flag")]
         [SerializeField] protected bool canMove = false;
 
         private GameObject player;
         private PlayerController plc;
 
-        protected virtual void UpdateCanMove()
-        {
+        protected virtual void UpdateCanMove() {
             plc.canMove = canMove;
         }
 
         #region Public members
 
-        public virtual void Start() 
-        {
+        public virtual void Start() {
             player = GameObject.Find("Player");
 
             if (player != null) {
@@ -38,19 +32,16 @@ namespace Fungus
             }
         }
 
-        public override void OnEnter()
-        {
+        public override void OnEnter() {
             UpdateCanMove();
             Continue();
         }
 
-        public override string GetSummary()
-        {
+        public override string GetSummary() {
             return "canMove = " + canMove.ToString();
         }
 
-        public override Color GetButtonColor()
-        {
+        public override Color GetButtonColor() {
             return new Color32(235, 191, 217, 255);
         }
 

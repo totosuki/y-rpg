@@ -3,17 +3,13 @@
 
 using UnityEngine;
 
-namespace Fungus
-{
+namespace Fungus {
     /// <summary>
     /// スキップボタンを設置
     /// </summary>
-    [CommandInfo("UI", 
-                 "Set Skip",
-                 "Set skip button on the screen")]
+    [CommandInfo("UI", "Set Skip", "Set skip button on the screen")]
     [AddComponentMenu("")]
-    public class SetSkip : Command 
-    {
+    public class SetSkip : Command {
         [Tooltip("Destination block")]
         [SerializeField] protected string nextBlockName;
         
@@ -22,32 +18,26 @@ namespace Fungus
 
         #region Public members
 
-        public virtual void Awake()
-        {
+        public virtual void Awake() {
             button = GameObject.Find("SkipButton");
         }
 
-        public virtual void Start() 
-        {
-            if (button == null)
-            {
+        public virtual void Start() {
+            if (button == null) {
                 Continue();
                 return;
             }
 
             buttonManager = button.GetComponent<SkipButtonManager>();
 
-            if (buttonManager == null)
-            {
+            if (buttonManager == null) {
                 Continue();
                 return;
             }
         }
 
-        public override void OnEnter()
-        {
-            if (button != null)
-            {
+        public override void OnEnter() {
+            if (button != null) {
                 buttonManager.SetNextBlock(nextBlockName);
                 buttonManager.Show();
             }
@@ -57,18 +47,15 @@ namespace Fungus
             // SkipButton側でOnClickが発動してSkipが発動する
         }
 
-        public override string GetSummary()
-        {
-            if (nextBlockName == "")
-            {
+        public override string GetSummary() {
+            if (nextBlockName == "") {
                 return "Error: Next block does not specified";
             }
 
             return "Set Skip Button -> " + nextBlockName;
         }
 
-        public override Color GetButtonColor()
-        {
+        public override Color GetButtonColor() {
             return new Color32(253, 253, 150, 255);
         }
 
