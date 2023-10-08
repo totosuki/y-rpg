@@ -1,3 +1,4 @@
+using Fungus;
 using UnityEngine;
 
 public class BattleLoader : MonoBehaviour {
@@ -9,6 +10,9 @@ public class BattleLoader : MonoBehaviour {
     public Mover line2;
     public ToggleDisplay status1;
     public ToggleDisplay status2;
+
+    // 子オブジェクトからの参照用
+    public Flowchart flowchart;
 
     // Start is called before the first frame update
     void Start() {
