@@ -9,7 +9,7 @@ public class NPCController : MonoBehaviour {
     public string message;
 
     // Fungus
-    [SerializeField] private Flowchart flowchart;
+    public Flowchart flowchart;
 
     private GameObject player;
     private PlayerController plc;

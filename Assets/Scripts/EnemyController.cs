@@ -1,10 +1,15 @@
 using UnityEngine;
+using Fungus;
 
 public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
     private NPCController controller;
 
     private GameObject player;
+
+    private Flowchart flowchart;
+
+    private Enemy enemy;
 
     private bool chaseFlag = true;
     private bool collided = false;
@@ -14,6 +19,9 @@ public class EnemyController : MonoBehaviour {
         player = GameObject.Find("Player");
         animController = GetComponent<NPCAnimController>();
         controller = GetComponent<NPCController>();
+
+        flowchart = controller.flowchart;
+        enemy = GetComponent<Enemy>();
     }
 
     void Update() {
@@ -85,7 +93,7 @@ public class EnemyController : MonoBehaviour {
 
         if (collided) {
             collided = false;
-            StartBattle();
+            Encountered();
         }
         else {
             collided = true;
@@ -109,5 +117,19 @@ public class EnemyController : MonoBehaviour {
 
     public void Hide() {
         gameObject.SetActive(false);
+    }
+
+    void Encountered()
+    {
+        SetSelfAsEnemy();
+        StartBattle();
+    }
+
+    void SetSelfAsEnemy()
+    {
+        // FungusのVariablesに自身をenemyとして登録
+        flowchart.SetGameObjectVariable("enemy", gameObject);
+        flowchart.SetStringVariable("enemy_name", enemy._name);
+        flowchart.SetIntegerVariable("enemy_lv", enemy.lv);
     }
 }
