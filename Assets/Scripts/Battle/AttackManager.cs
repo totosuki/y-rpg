@@ -5,6 +5,7 @@ public class AttackManager : MonoBehaviour
 {
     [SerializeField] private GameObject bar;
     [SerializeField] private GameObject pointer;
+    [SerializeField] private GameObject criticalArea;
 
     // *** Enemyから操作
 
@@ -54,10 +55,10 @@ public class AttackManager : MonoBehaviour
 
             pointer.transform.localPosition = Vector2.Lerp(startPosition, endPosition, animationCurve.Evaluate(rate));
 
+            // 右クリック
             if (Input.GetMouseButton(0))
             {
-                flowchart.SendFungusMessage("attacked");
-                isAttacking = false;
+                FinishAttack();
             }
         }
     }
@@ -70,5 +71,26 @@ public class AttackManager : MonoBehaviour
         pointer.transform.localPosition = startPosition;
 
         gameObject.SetActive(true);
+    }
+
+    public void FinishAttack()
+    {
+        // ここでダメージ計算するのは違う気がする
+        int damage = 0;
+
+        flowchart.SendFungusMessage("attacked");
+        isAttacking = false;
+
+        if (IsCritical())
+        {
+            damage *= 2;
+        }
+
+        print(damage);
+    }
+
+    public bool IsCritical()
+    {
+        return true;
     }
 }
