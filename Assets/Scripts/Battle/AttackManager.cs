@@ -31,7 +31,7 @@ public class AttackManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        flowchart = GetComponentInParent<BattleLoader>().flowchart;
+        flowchart = GetComponentInParent<BattleManager>().flowchart;
 
         print(flowchart);
 
@@ -76,21 +76,16 @@ public class AttackManager : MonoBehaviour
     public void FinishAttack()
     {
         // ここでダメージ計算するのは違う気がする
-        int damage = 0;
+        int damage = 10;
 
         flowchart.SendFungusMessage("attacked");
         isAttacking = false;
 
-        if (IsCritical())
-        {
-            damage *= 2;
-        }
-
-        print(damage);
+        print(IsCritical() ? "Critical" : "normal");
     }
 
     public bool IsCritical()
     {
-        return true;
+        return criticalArea.GetComponent<CriticalManager>().isCritical;
     }
 }
