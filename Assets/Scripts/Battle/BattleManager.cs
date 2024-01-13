@@ -39,7 +39,7 @@ public class BattleManager : MonoBehaviour
     void Start()
     {
         int playerMaxHp = GetMaxHp("player");
-        int EnemyMaxHp = GetMaxHp("enemy")
+        int EnemyMaxHp = GetMaxHp("enemy");
 
         // Entityを初期化
         playerEntity = new Entity("player", playerMaxHp);
@@ -194,7 +194,7 @@ public class BattleManager : MonoBehaviour
     {
         // 通常画面とバトル画面で変更が必要な点を記載
         // 基本的には逆の設定になるはず
-        if (flag === true)
+        if (flag == true)
         {
             // 通常画面のプレイヤーの当たり判定を無効化
             player.GetComponent<Collider2D>().enabled = false;
