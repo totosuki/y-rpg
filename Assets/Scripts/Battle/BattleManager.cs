@@ -5,6 +5,7 @@ using Fungus;
 
 public class BattleManager : MonoBehaviour
 {
+    // 外に出してPlayerとEnemyに持たせてもいいかも
     private class Entity
     {
         public int hp;
@@ -17,7 +18,6 @@ public class BattleManager : MonoBehaviour
             this.hp = hp;
         }
     }
-
 
     [SerializeField] private GameObject player;
 
@@ -38,34 +38,49 @@ public class BattleManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerEntity = new Entity("player", GetMaxHp("player"));
-        enemyEntity = new Entity("enemy", GetMaxHp("enemy"));
+        int playerMaxHp = GetMaxHp("player");
+        int EnemyMaxHp = GetMaxHp("enemy")
 
-        playerStatus.UpdateHp(GetMaxHp("player"), GetMaxHp("player"));
-        enemyStatus.UpdateHp(GetMaxHp("enemy"), GetMaxHp("enemy"));
+        // Entityを初期化
+        playerEntity = new Entity("player", playerMaxHp);
+        enemyEntity = new Entity("enemy", EnemyMaxHp);
+
+        // 表示の更新
+        // Player
+        playerStatus.UpdateHp(playerMaxHp, playerMaxHp);
+        // Enemy
+        enemyStatus.UpdateHp(EnemyMaxHp, EnemyMaxHp);
         enemyStatus.UpdateName(enemy._name, enemy.lv);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Encounter()
     {
-        player.GetComponent<Collider2D>().enabled = false;
+        // バトル相手となるEnemyを取得
         enemy = GetEnemy();
 
-        print(enemy);
-        SetBattleConfigByEnemy();
+        // バトルの設定をEnemyから適用する
+        SetBattleConfigByEnemy(enemy);
+
+        ToggleBattleModeTo(true);
+    }
+
+    public void EndBattle()
+    {
+        ToggleBattleModeTo(false);
+    }
+
+    public void PlayerAttack()
+    {
+        // 攻撃の入力を受け付ける
+        attackManager.DoAttack();
+        // -> FlowChartから PlayerTurnEnd() に受け渡し
     }
 
     public void PlayerTurnEnd()
     {
         bool isCritical = attackManager.IsCritical();
         // ATK ハードコードしてます
-        float damage = CalculateDamage(3, isCritical);
+        int damage = CalculateDamage(3, isCritical);
         flowchart.SetIntegerVariable("damage", (int)damage);
 
         // custom_textを編集
@@ -75,7 +90,7 @@ public class BattleManager : MonoBehaviour
         // この攻撃で相手を倒せるかどうか
         if (enemyEntity.hp - damage <= 0)
         {
-            // HPを0にする
+            // HPを0にする（倒した判定）
             applyDamage(enemyEntity, (int)enemyEntity.hp);
             BattleEndFlag(true);
         }
@@ -85,21 +100,16 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void PlayerAttack()
-    {
-        attackManager.DoAttack();
-    }
-
     public void EnemyAttack()
     {
         // ATK ハードコードしてます
-        float damage = CalculateDamage(3, false);
+        int damage = CalculateDamage(3, false);
         flowchart.SetIntegerVariable("damage", (int)damage);
 
         // この攻撃で相手を倒せるかどうか
         if (playerEntity.hp - damage <= 0)
         {
-            // HPを0にする
+            // HPを0にする（倒した判定）
             applyDamage(playerEntity, (int)playerEntity.hp);
             BattleEndFlag(true);
         }
@@ -109,19 +119,49 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    public void EndBattle()
+    int CalculateDamage(float atk, bool isCritical)
     {
-        player.GetComponent<Collider2D>().enabled = true;
+        // ATKとクリティカルかどうかでダメージを計算
+
+        // ハードコード中 クリティカル倍率
+        float criticalRate = 2.0f;
+        // ダメージ計算式 要調整
+        float damage = atk * 10;
+
+        // クリティカルの場合はクリティカル倍率を適用
+        if (isCritical) {
+            damage *= criticalRate;
+        }
+        return (int)Mathf.Floor(damage);
     }
+
+    void applyDamage(Entity target, int damage)
+    {
+        // 対象にダメージを適用する
+        target.hp -= damage;
+
+        // 表示を更新
+        if (target.side == "player")
+        {
+            playerStatus.UpdateHp(target.hp, GetMaxHp("player"));
+        }
+        else if (target.side == "enemy")
+        {
+            enemyStatus.UpdateHp(target.hp, GetMaxHp("enemy"));
+        }
+    }
+
 
     private Enemy GetEnemy()
     {
+        // FlowChartからバトル相手となるEnemyを取得
         GameObject enemyObject = flowchart.GetGameObjectVariable("enemy");
         return enemyObject.GetComponent<Enemy>();
     }
 
     private int GetMaxHp(string side)
     {
+        // FlowChartから取得
         if (side == "player")
         {
             return (int)flowchart.GetIntegerVariable("player_hp");
@@ -135,42 +175,33 @@ public class BattleManager : MonoBehaviour
             return -1;
         }
     }
-    
-    void SetBattleConfigByEnemy()
+
+    private void SetBattleConfigByEnemy(Enemy enemy)
     {
+        // Enemyからバトルの設定（主にAttackManager）を適用する
         attackManager.animationCurve = enemy.animationCurve;
         attackManager.duration = enemy.duration;
     }
 
-    float CalculateDamage(float atk, bool isCritical)
-    {
-        float criticalRate = 2.0f;
-        float damage = atk * 10;
-        if (isCritical) {
-            damage *= criticalRate;
-        }
-
-        return Mathf.Floor(damage);
-    }
-
-    void applyDamage(Entity target, int damage)
-    {
-        print($"{damage} damage to {target}");
-        print(target.hp);
-        target.hp -= damage;
-
-        if (target.side == "player")
-        {
-            playerStatus.UpdateHp(target.hp, GetMaxHp("player"));
-        }
-        else if (target.side == "enemy")
-        {
-            enemyStatus.UpdateHp(target.hp, GetMaxHp("enemy"));
-        }
-    }
-
     private void BattleEndFlag(bool flag)
     {
+        // バトルが終了したことをFlowChartに反映する
         flowchart.SetBooleanVariable("is_battle_ended", flag);
+    }
+
+    // 外部から使う機会があればpublicに
+    private void ToggleBattleModeTo(bool flag)
+    {
+        // 通常画面とバトル画面で変更が必要な点を記載
+        // 基本的には逆の設定になるはず
+        if (flag === true)
+        {
+            // 通常画面のプレイヤーの当たり判定を無効化
+            player.GetComponent<Collider2D>().enabled = false;
+        }
+        else
+        {
+            player.GetComponent<Collider2D>().enabled = true;
+        }
     }
 }
