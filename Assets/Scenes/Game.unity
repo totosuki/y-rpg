@@ -1433,6 +1433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 228198885}
   - component: {fileID: 228198886}
+  - component: {fileID: 228198887}
   m_Layer: 5
   m_Name: EnemyStatus
   m_TagString: Untagged
@@ -1476,6 +1477,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitDuration: 3.55
   display: 1
+--- !u!114 &228198887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228198884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589211b5af99c48e2b39edd15b37a0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpText: {fileID: 304031159}
+  nameText: {fileID: 923726034}
 --- !u!1 &241257699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2073,7 @@ GameObject:
   - component: {fileID: 304031160}
   - component: {fileID: 304031159}
   m_Layer: 5
-  m_Name: Status
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4003,6 +4018,7 @@ GameObject:
   - component: {fileID: 600660863}
   - component: {fileID: 600660862}
   - component: {fileID: 600660864}
+  - component: {fileID: 600660865}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -4023,11 +4039,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 61.90964, y: -17.88189}
+  scrollPos: {x: 204.58289, y: 48.59418}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 1
+  zoom: 0.7540016
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -4035,9 +4051,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600660858}
-  selectedCommands:
-  - {fileID: 600660857}
+  - {fileID: 600660800}
+  selectedCommands: []
   variables:
   - {fileID: 600660602}
   - {fileID: 600660676}
@@ -4100,7 +4115,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 67
     y: 69
-    width: 100
+    width: 101.72403
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4434,7 +4449,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 66.631744
     y: 169.17041
-    width: 97
+    width: 99.07152
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4637,7 +4652,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 208.57721
     y: 71.04998
-    width: 107
+    width: 109.01844
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4762,7 +4777,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 211.69794
     y: 165.50633
-    width: 96
+    width: 97.08212
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4847,7 +4862,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 266.382
     y: 232.68394
-    width: 113
+    width: 114.986595
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -4900,7 +4915,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 153.93837
     y: 235.748
-    width: 104
+    width: 105.7028
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5151,7 +5166,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -216.86115
     y: 65.74027
-    width: 84
+    width: 84.48268
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5232,7 +5247,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -219.16791
     y: 131.58025
-    width: 111
+    width: 112.33408
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5632,7 +5647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 1
   key: enemy_hp
-  value: 0
+  value: 100
 --- !u!114 &600660676
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5647,7 +5662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 1
   key: player_hp
-  value: 0
+  value: 100
 --- !u!114 &600660680
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -5679,7 +5694,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -68.53094
     y: 121.09048
-    width: 125
+    width: 127.58604
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5746,7 +5761,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 61.8673
     y: 291.1983
-    width: 90
+    width: 91.7771
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6013,7 +6028,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 33.030304
     y: 355.00885
-    width: 152
+    width: 154.7743
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6137,7 +6152,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 55.386654
     y: 462.73386
-    width: 115
+    width: 117.639114
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6512,7 +6527,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 123.09536
     y: 405.45496
-    width: 121
+    width: 123.60727
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6544,7 +6559,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -7.896387
     y: 403.37622
-    width: 111
+    width: 112.99721
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6805,7 +6820,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -211.23813
     y: 217.00171
-    width: 82
+    width: 83.15643
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -6986,7 +7001,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -228.63028
     y: 285.62033
-    width: 116
+    width: 118.30224
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7172,7 +7187,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 520.12585
     y: 104.99342
-    width: 107
+    width: 109.01844
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7303,7 +7318,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 527.81757
     y: 225.70729
-    width: 110
+    width: 111.00783
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7472,7 +7487,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 540.67224
     y: 287.7522
-    width: 93
+    width: 94.42961
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7565,7 +7580,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 599.2725
     y: 338.38556
-    width: 85
+    width: 86.47207
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7619,8 +7634,8 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 490.94244
-    y: 339.73877
-    width: 87
+    y: 341.06503
+    width: 87.798325
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -7718,7 +7733,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 526.9181
     y: 165.54044
-    width: 104
+    width: 105.7028
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8264,7 +8279,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -36.48038
     y: -2.6568146
-    width: 67
+    width: 67.90447
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8442,13 +8457,13 @@ MonoBehaviour:
   itemId: 271
   indentLevel: 0
   description: 
-  targetObject: {fileID: 919618410}
-  targetComponentAssemblyName: AttackManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+  targetObject: {fileID: 748096482}
+  targetComponentAssemblyName: BattleManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
   targetComponentFullname: UnityEngine.Component[]
-  targetComponentText: AttackManager
-  targetMethod: DoAttack
-  targetMethodText: 'DoAttack (): Void'
+  targetComponentText: BattleManager
+  targetMethod: PlayerAttack
+  targetMethodText: 'PlayerAttack (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -8488,7 +8503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 273
   indentLevel: 0
-  storyText: "${player_name}\u306E\u653B\u6483\uFF01\n${enemy_name}\u306B10\u30C0\u30E1\u30FC\u30B8\uFF01"
+  storyText: "{$player_name}\u306E\u653B\u6483\uFF01\n{$enemy_name}\u306BN\u30C0\u30E1\u30FC\u30B8\uFF01"
   description: 
   character: {fileID: 0}
   portrait: {fileID: 0}
@@ -8515,9 +8530,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 483.14093
-    y: 396.53143
-    width: 134
+    x: 521.6024
+    y: 397.8577
+    width: 136.86984
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -8526,6 +8541,7 @@ MonoBehaviour:
   description: 
   eventHandler: {fileID: 600660859}
   commandList:
+  - {fileID: 600660865}
   - {fileID: 600660857}
   - {fileID: 600660856}
   - {fileID: 600660860}
@@ -8610,7 +8626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scope: 1
   key: enemy_name
-  value: 
+  value: aaa
 --- !u!114 &600660864
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -8633,6 +8649,34 @@ MonoBehaviour:
   targetComponentText: BattleManager
   targetMethod: Encounter
   targetMethodText: 'Encounter (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
+--- !u!114 &600660865
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 277
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 748096482}
+  targetComponentAssemblyName: BattleManager, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: BattleManager
+  targetMethod: PlayerTurnEnd
+  targetMethodText: 'PlayerTurnEnd (): Void'
   methodParameters: []
   saveReturnValue: 0
   returnValueVariableKey: 
@@ -9279,6 +9323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1139731380}
   attackManager: {fileID: 919618412}
+  playerStatus: {fileID: 945981286}
+  enemyStatus: {fileID: 228198887}
   flowchart: {fileID: 600660564}
 --- !u!1 &776898786
 GameObject:
@@ -10758,6 +10804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945981284}
   - component: {fileID: 945981285}
+  - component: {fileID: 945981286}
   m_Layer: 5
   m_Name: PlayerStatus
   m_TagString: Untagged
@@ -10801,6 +10848,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitDuration: 3.55
   display: 1
+--- !u!114 &945981286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945981283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589211b5af99c48e2b39edd15b37a0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpText: {fileID: 1651312259}
+  nameText: {fileID: 1413240849}
 --- !u!1 &966530775
 GameObject:
   m_ObjectHideFlags: 0
@@ -13215,6 +13276,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
+      propertyPath: hp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: lv
       value: 15
       objectReference: {fileID: 0}
@@ -13232,11 +13297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].time
-      value: 0.24508554
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[2].time
@@ -13244,7 +13309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].value
-      value: 0.5854123
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[2].value
@@ -13256,7 +13321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].inSlope
-      value: -0.7035962
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[0].outSlope
@@ -13264,15 +13329,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].outSlope
-      value: -0.7035962
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8650694514837456268, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: animationCurve.m_Curve.Array.data[1].outWeight
-      value: 0.20520797
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
@@ -16766,7 +16831,7 @@ GameObject:
   - component: {fileID: 1651312260}
   - component: {fileID: 1651312259}
   m_Layer: 5
-  m_Name: Status
+  m_Name: HP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16813,7 +16878,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "HP: 25/100\n\u5F79\u8077: \u52C7\u8005"
+  m_text: 'HP: 25/100'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 34822202666e94bd8b7a0256492932a7, type: 2}
   m_sharedMaterial: {fileID: -5050948805071348946, guid: 34822202666e94bd8b7a0256492932a7, type: 2}

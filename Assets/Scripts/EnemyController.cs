@@ -131,5 +131,6 @@ public class EnemyController : MonoBehaviour {
         flowchart.SetGameObjectVariable("enemy", gameObject);
         flowchart.SetStringVariable("enemy_name", enemy._name);
         flowchart.SetIntegerVariable("enemy_lv", enemy.lv);
+        flowchart.SetIntegerVariable("enemy_hp", enemy.hp);
     }
 }

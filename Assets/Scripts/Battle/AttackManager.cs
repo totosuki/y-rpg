@@ -75,13 +75,8 @@ public class AttackManager : MonoBehaviour
 
     public void FinishAttack()
     {
-        // ここでダメージ計算するのは違う気がする
-        int damage = 10;
-
         flowchart.SendFungusMessage("attacked");
         isAttacking = false;
-
-        print(IsCritical() ? "Critical" : "normal");
     }
 
     public bool IsCritical()
