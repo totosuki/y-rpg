@@ -13,6 +13,9 @@ public class NPCController : MonoBehaviour {
     private GameObject player;
     private PlayerController plc;
 
+    private GameObject turnManagerObject;
+    private TurnManager turnManager;
+
     [SerializeField] private GameObject popup;
 
     public enum TypeEnum { NPC, ACTOR_NPC, ENEMY }
@@ -65,10 +68,28 @@ public class NPCController : MonoBehaviour {
     private Dictionary<int, string> _messageListDictionary;
     private Dictionary<int, string> messageListDictonary => _messageListDictionary ??= messageList.ToDictionary(p => p.Key, p => p.Value);
 
+    private string currentTurnMessage;
+
     void Start()
     {
         player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
+
+        turnManagerObject = GameObject.Find("TurnManager");
+        turnManager = turnManagerObject.GetComponent<TurnManager>();
+
+        // メッセージの設定
+        if (multipleMessages)
+        {
+            // ターンが更新されるたびにメッセージに更新が走るようにする
+            turnManager.onTurnUpdate.AddListener(UpdateCurrentTurnAndMessage);
+        }
+        else
+        {
+            // 単体メッセージを登録
+            currentTurnMessage = message;
+        }
+        
         popup = transform.GetChild(0).gameObject;
         // 設定を適用
         SetTypeTo(type);
@@ -165,29 +186,48 @@ public class NPCController : MonoBehaviour {
 
     void SendFungusMessage()
     {
-        if (multipleMessages)
+        flowchart.SendFungusMessage(currentTurnMessage);
+    }
+
+    void UpdateCurrentTurnAndMessage()
+    {
+        // ターンの更新時に呼び出される
+        // currentTurnMessageを最新状態に更新
+        int turn = turnManager.GetCurrentTurn();
+
+        if (messageListDictonary.ContainsKey(turn))
         {
-            // 今のターンを参照して対応するメッセージを送信
-            int turn = flowchart.GetIntegerVariable("turn");
-            string message = messageListDictonary[turn];
-            flowchart.SendFungusMessage(message);
+            currentTurnMessage = messageListDictonary[turn];
+
+            if (type == TypeEnum.ACTOR_NPC)
+            {
+                SetTypeTo(TypeEnum.NPC);
+            }
         }
         else
         {
-            // 単体メッセージを送信
-            flowchart.SendFungusMessage(message);
+            SetTypeTo(TypeEnum.ACTOR_NPC);
         }
     }
 
     // 当たり判定
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player") inCollision = true;
+        if (other.gameObject.tag == "Player")
+        {
+            inCollision = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player") inCollision = false;
+        if (other.gameObject.tag == "Player")
+        {
+            if (inCollision)
+            {
+                inCollision = false;
+            }
+        }
     }
     
     // EnemyControllerから
