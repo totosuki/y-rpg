@@ -20,6 +20,9 @@ public class NPCController : MonoBehaviour {
 
     [Tooltip("NPCのタイプ")]
     [SerializeField]private TypeEnum type = TypeEnum.NPC;
+
+    // never used 警告避け
+    TypeEnum Pass() => type;
     
     [Tooltip("会話できるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     [SerializeField] private bool talkable;
