@@ -18,7 +18,7 @@ public class NPCController : MonoBehaviour {
 
     // 設定項目 インスペクターでいじるだけ
     [Tooltip("会話できるかどうか")]
-    [SerializeField] private bool canTalk;
+    [SerializeField] private bool talkable;
 
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
     [SerializeField] private bool FireOnCollision;
@@ -28,9 +28,9 @@ public class NPCController : MonoBehaviour {
 
 
     // 会話可能圏内に入っているかどうか
-    private bool canActivate;
+    private bool canTalk;
     // 会話中かどうか
-    private bool isRunning;
+    private bool isTalking;
 
 
     void Start() {
@@ -40,7 +40,7 @@ public class NPCController : MonoBehaviour {
     }
 
     void Update() {
-        if (canActivate && canTalk && !isRunning) {
+        if (canTalk && talkable && !isTalking) {
             if (Input.GetMouseButtonDown(0) || FireOnCollision) {
                 StartTalk();
                 // 無限ループ防止
@@ -55,7 +55,7 @@ public class NPCController : MonoBehaviour {
 
     // Fungusを呼び出して会話を始める
     IEnumerator Talk(Action callback) {
-        isRunning = true;
+        isTalking = true;
         canCallback = true;
 
         flowchart.SendFungusMessage(message);
@@ -63,7 +63,7 @@ public class NPCController : MonoBehaviour {
 
         if (canCallback) callback();
 
-        isRunning = false;
+        isTalking = false;
     }
 
     public void StartTalk() {
@@ -77,20 +77,20 @@ public class NPCController : MonoBehaviour {
 
     // 当たり判定
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.tag == "Player") canActivate = true;
+        if (other.gameObject.tag == "Player") canTalk = true;
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.tag == "Player") canActivate = false;
+        if (other.gameObject.tag == "Player") canTalk = false;
     }
     
     // EnemyControllerから
-    public bool getCanActivate() {
-        return canActivate;
+    public bool GetCanTalk() {
+        return canTalk;
     }
 
     public void DisableCanActivate() {
-        canActivate = false;
+        canTalk = false;
     }
 
     // 呼び出すと一回だけコールバックを無効化
