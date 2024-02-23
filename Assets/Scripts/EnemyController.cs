@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Update() {
-        if (controller.canActivate) {
+        if (controller.getCanActivate()) {
             int playerFacing = GetPlayerFacing();
 
             // playerFacingの値が変わった時に実行

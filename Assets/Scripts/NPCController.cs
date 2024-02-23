@@ -16,18 +16,20 @@ public class NPCController : MonoBehaviour {
 
     [SerializeField] private GameObject popup;
 
+    // 設定項目 インスペクターでいじるだけ
     [Tooltip("会話できるかどうか")]
     [SerializeField] private bool canTalk;
 
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
     [SerializeField] private bool FireOnCollision;
     
-    [Tooltip("会話圏内に入っているかどうか")]
-    public bool canActivate;
-
     [Tooltip("会話終了後にEnableCanMove()するかどうか")]
-    public bool canCallback;
+    [SerializeField] private bool canCallback;
 
+
+    // 会話可能圏内に入っているかどうか
+    private bool canActivate;
+    // 会話中かどうか
     private bool isRunning;
 
 
@@ -80,6 +82,11 @@ public class NPCController : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Player") canActivate = false;
+    }
+    
+    // EnemyControllerから
+    public bool getCanActivate() {
+        return canActivate;
     }
 
     public void DisableCanActivate() {
