@@ -33,7 +33,7 @@ public class NPCController : MonoBehaviour {
     // === === //
 
     // 会話可能圏内に入っているかどうか
-    private bool canTalk = false;
+    private bool inCollision = false;
     // 会話を止めないフラグ
     private bool dontstop;
 
@@ -49,7 +49,7 @@ public class NPCController : MonoBehaviour {
     void Update()
     {
         // 会話可能 && 会話可能圏内にいる
-        if (type == TypeEnum.NPC && canTalk)
+        if (type == TypeEnum.NPC && IsPlayerInCollision())
         {
             // クリックされたらいつでも会話できる状態にする
             if (Input.GetMouseButtonDown(0) || fireOnCollision)
@@ -138,18 +138,18 @@ public class NPCController : MonoBehaviour {
     // 当たり判定
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player") canTalk = true;
+        if (other.gameObject.tag == "Player") inCollision = true;
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player") canTalk = false;
+        if (other.gameObject.tag == "Player") inCollision = false;
     }
     
     // EnemyControllerから
-    public bool GetCanTalk()
+    public bool IsPlayerInCollision()
     {
-        return canTalk;
+        return inCollision;
     }
 
     // 一回会話終了を見送る

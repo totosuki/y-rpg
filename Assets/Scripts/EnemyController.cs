@@ -25,7 +25,8 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Update() {
-        if (controller.GetCanTalk()) {
+        if (controller.IsPlayerInCollision()) {
+            // プレイヤーを認識したら追跡開始
             int playerFacing = GetPlayerFacing();
 
             // playerFacingの値が変わった時に実行
