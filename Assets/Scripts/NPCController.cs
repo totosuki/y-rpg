@@ -5,9 +5,6 @@ using Fungus;
 
 
 public class NPCController : MonoBehaviour {
-    [Tooltip("会話開始Fungusメッセージ")]
-    public string message;
-
     // Fungus
     public Flowchart flowchart;
 
@@ -16,16 +13,27 @@ public class NPCController : MonoBehaviour {
 
     [SerializeField] private GameObject popup;
 
-    // 設定項目 インスペクターでいじるだけ
-    [Tooltip("会話できるかどうか")]
+    private enum TypeEnum { NPC, ACTOR_NPC, ENEMY }
+
+    // === NPC設定 インスペクターでいじるだけ === //
+    [Header("NPC設定")]
+
+    [Tooltip("NPCのタイプ")]
+    [SerializeField]private TypeEnum type = TypeEnum.NPC;
+    
+    [Tooltip("会話できるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     [SerializeField] private bool talkable;
 
-    [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
+    [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     [SerializeField] private bool fireOnCollision;
     
-    [Tooltip("会話終了後にEnableCanMove()するかどうか")]
+    [Tooltip("会話終了後にEnableCanMove()するかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     [SerializeField] private bool enableCanMoveAfterTalk;
 
+    [Tooltip("会話開始Fungusメッセージ"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.ACTOR_NPC, notEqualThenEnable: true, conditionalInvisible: true)]
+    public string message;
+
+    // === === //
 
     // 会話可能圏内に入っているかどうか
     private bool canTalk;
@@ -38,6 +46,9 @@ public class NPCController : MonoBehaviour {
         player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
         popup = transform.GetChild(0).gameObject;
+
+        print(message);
+        print(fireOnCollision);
     }
 
     void Update()
@@ -50,7 +61,7 @@ public class NPCController : MonoBehaviour {
             {
                 StartTalk();
                 // 無限ループ防止
-                if (fireOnCollision) 
+                if (fireOnCollision)
                 {
                     fireOnCollision = false;
                 }
