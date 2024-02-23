@@ -23,30 +23,19 @@ public class NPCController : MonoBehaviour {
 
     // never used 警告避け
     TypeEnum Pass() => type;
-    
-    [Tooltip("会話できるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
-    [SerializeField] private bool _talkable;
 
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
-    [SerializeField] private bool _fireOnCollision;
-    
-    [Tooltip("会話終了後にEnableCanMove()するかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
-    [SerializeField] private bool _enableCanMoveAfterTalk;
+    [SerializeField] private bool fireOnCollision;
 
-    [Tooltip("会話開始Fungusメッセージ"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.ACTOR_NPC, notEqualThenEnable: true, conditionalInvisible: true)]
+    [Tooltip("会話開始Fungusメッセージ"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     public string message;
 
     // === === //
 
     // 会話可能圏内に入っているかどうか
     private bool canTalk = false;
-
-    // 実際に使うのはこっち
-    private bool talkable;
-    private bool fireOnCollision;
-    private bool enableCanMoveAfterTalk;
-
-    public bool dontstop;
+    // 会話を止めないフラグ
+    private bool dontstop;
 
     void Start()
     {
@@ -60,7 +49,7 @@ public class NPCController : MonoBehaviour {
     void Update()
     {
         // 会話可能 && 会話可能圏内にいる
-        if (talkable && canTalk)
+        if (type == TypeEnum.NPC && canTalk)
         {
             // クリックされたらいつでも会話できる状態にする
             if (Input.GetMouseButtonDown(0) || fireOnCollision)
@@ -75,33 +64,10 @@ public class NPCController : MonoBehaviour {
         }
     }
 
-    // タイプ別の設定を適用する
+    // 新しいタイプを適用する
     public void SetTypeTo(TypeEnum _type)
     {
         type = _type;
-        
-        switch (type)
-        {
-            case TypeEnum.NPC:
-                SetSetting(_talkable, _fireOnCollision, _enableCanMoveAfterTalk);
-                break;
-
-            case TypeEnum.ACTOR_NPC:
-                SetSetting(false, false, false);
-                break;
-
-            case TypeEnum.ENEMY:
-                SetSetting(false, false, false);
-                break;
-
-        }   
-    }
-
-    void SetSetting(bool _talkable, bool _fireOnCollision, bool _enableCanMoveAfterTalk)
-    {
-        talkable = _talkable;
-        fireOnCollision = _fireOnCollision;
-        enableCanMoveAfterTalk = _enableCanMoveAfterTalk;
     }
 
     // Fungusを呼び出して会話を始める
@@ -165,10 +131,7 @@ public class NPCController : MonoBehaviour {
 
         StartCoroutine(Talk(() => {
             // コールバック
-            if (enableCanMoveAfterTalk)
-            {
-                plc.EnableCanMove();
-            }
+            plc.EnableCanMove();
         }));
     }
 
