@@ -27,8 +27,30 @@ public class NPCController : MonoBehaviour {
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
     [SerializeField] private bool fireOnCollision;
 
-    [Tooltip("会話開始Fungusメッセージ"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
+    // メッセージ設定
+    [Header("メッセージ設定")]
+
+    [Tooltip("ターン別メッセージを使用可能にする"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
+    [SerializeField] private bool multipleMessages;
+
+    [Tooltip("単体メッセージ"), ConditionalDisableInInspector(nameof(multipleMessages), false)]
     public string message;
+
+    // ターン:メッセージの組
+    [Serializable]
+    public class SerializableKeyPair<TKey, TValue>
+    {
+        [Tooltip("このメッセージが適用されるターン")]
+        [SerializeField] private TKey turn;
+        [Tooltip("このターンに適用されるメッセージ")]
+        [SerializeField] private TValue message;
+
+        public TKey Key => turn;
+        public TValue Value => message;
+    }
+
+    [Tooltip("ターン別メッセージリスト"), ConditionalDisableInInspector(nameof(multipleMessages), true)]
+    [SerializeField] private SerializableKeyPair<int,string>[] messageList = default;
 
     // === === //
 
@@ -77,7 +99,7 @@ public class NPCController : MonoBehaviour {
         SetTypeTo(TypeEnum.ACTOR_NPC);
 
         // Flowchartから会話を呼び出し
-        flowchart.SendFungusMessage(message);
+        SendFungusMessage();
 
         // 会話終了の待機
         int target = 0;
@@ -133,6 +155,19 @@ public class NPCController : MonoBehaviour {
             // コールバック
             plc.EnableCanMove();
         }));
+    }
+
+    void SendFungusMessage()
+    {
+        if (multipleMessages)
+        {
+            // TODO リストから適したメッセージを送信
+            return;
+        }
+        else
+        {
+            flowchart.SendFungusMessage(message);
+        }
     }
 
     // 当たり判定
