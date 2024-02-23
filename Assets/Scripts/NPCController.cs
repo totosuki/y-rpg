@@ -21,10 +21,10 @@ public class NPCController : MonoBehaviour {
     [SerializeField] private bool talkable;
 
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
-    [SerializeField] private bool FireOnCollision;
+    [SerializeField] private bool fireOnCollision;
     
     [Tooltip("会話終了後にEnableCanMove()するかどうか")]
-    [SerializeField] private bool canCallback;
+    [SerializeField] private bool enableCanMoveAfterTalk;
 
 
     // 会話可能圏内に入っているかどうか
@@ -33,68 +33,81 @@ public class NPCController : MonoBehaviour {
     private bool isTalking;
 
 
-    void Start() {
+    void Start()
+    {
         player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
         popup = transform.GetChild(0).gameObject;
     }
 
-    void Update() {
-        if (canTalk && talkable && !isTalking) {
-            if (Input.GetMouseButtonDown(0) || FireOnCollision) {
+    void Update()
+    {
+        // 会話可能 && 会話可能圏内にいる && 会話中でない
+        if (talkable && canTalk && !isTalking)
+        {
+            // クリックされたらいつでも会話できる状態にする
+            if (Input.GetMouseButtonDown(0) || fireOnCollision)
+            {
                 StartTalk();
                 // 無限ループ防止
-                if (FireOnCollision) FireOnCollision = false;
+                if (fireOnCollision) 
+                {
+                    fireOnCollision = false;
+                }
             }
             popup.SetActive(true);
         }
-        else {
+        else
+        {
             popup.SetActive(false);
         }
     }
 
     // Fungusを呼び出して会話を始める
-    IEnumerator Talk(Action callback) {
+    IEnumerator Talk(Action callback)
+    {
+        // 会話開始
         isTalking = true;
-        canCallback = true;
 
+        // Flowchartから会話を呼び出し
         flowchart.SendFungusMessage(message);
         yield return new WaitUntil(() => flowchart.GetExecutingBlocks().Count == 0);
 
-        if (canCallback) callback();
+        // 会話終了時にコールバック
+        callback();
 
+        // 会話終了
         isTalking = false;
     }
 
-    public void StartTalk() {
+    public void StartTalk()
+    {
+        // プレイヤーの移動を制限
         plc.DisableCanMove();
 
         StartCoroutine(Talk(() => {
-            // callback
-            plc.EnableCanMove();
+            // コールバック
+            if (enableCanMoveAfterTalk)
+            {
+                plc.EnableCanMove();
+            }
         }));
     }
 
     // 当たり判定
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         if (other.gameObject.tag == "Player") canTalk = true;
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other)
+    {
         if (other.gameObject.tag == "Player") canTalk = false;
     }
     
     // EnemyControllerから
-    public bool GetCanTalk() {
+    public bool GetCanTalk()
+    {
         return canTalk;
-    }
-
-    public void DisableCanActivate() {
-        canTalk = false;
-    }
-
-    // 呼び出すと一回だけコールバックを無効化
-    public void DisableCallback() {
-        canCallback = false;
     }
 }
