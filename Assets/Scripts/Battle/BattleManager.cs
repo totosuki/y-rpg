@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Fungus;
 
@@ -8,8 +6,8 @@ public class BattleManager : MonoBehaviour
     // 外に出してPlayerとEnemyに持たせてもいいかも
     private class Entity
     {
-        public int hp;
         public string side;
+        public int hp;
 
         public Entity(string side, int hp)
         {
@@ -20,6 +18,7 @@ public class BattleManager : MonoBehaviour
     }
 
     [SerializeField] private GameObject player;
+    private GameObject enemy;
 
     [SerializeField] private AttackManager attackManager;
 
@@ -27,40 +26,44 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private StatusController playerStatus;
     [SerializeField] private StatusController enemyStatus;
 
-    private Enemy enemy;
+    private EnemySetting enemySetting;
+
+    private EntityStatus playerEntityStatus;
+    private EntityStatus enemyEntityStatus;
 
     private Entity playerEntity;
     private Entity enemyEntity;
     
     // 子オブジェクトからの参照用としても使う
     public Flowchart flowchart;
-    
-    // Start is called before the first frame update
-    void Start()
+
+    public void BattleInit()
     {
-        int playerMaxHp = GetMaxHp("player");
-        int EnemyMaxHp = GetMaxHp("enemy");
+        // FlowChartから対戦相手のEnemyのGameObjectを取得する
+        enemy = flowchart.GetGameObjectVariable("enemy");
+
+        playerEntityStatus = player.GetComponent<EntityStatus>();
+        enemyEntityStatus = enemy.GetComponent<EntityStatus>();
 
         // Entityを初期化
-        playerEntity = new Entity("player", playerMaxHp);
-        enemyEntity = new Entity("enemy", EnemyMaxHp);
+        playerEntity = new Entity("player", playerEntityStatus.hp);
+        enemyEntity = new Entity("enemy", enemyEntityStatus.hp);
 
         // 表示の更新
+        int playerMaxHp = playerEntityStatus.hp;
+        int enemyMaxHp = enemyEntityStatus.hp;
         // Player
         playerStatus.UpdateHp(playerMaxHp, playerMaxHp);
+        playerStatus.UpdateName(playerEntityStatus._name, playerEntityStatus.lv);
         // Enemy
-        enemyStatus.UpdateHp(EnemyMaxHp, EnemyMaxHp);
-        enemyStatus.UpdateName(enemy._name, enemy.lv);
-    }
-
-    public void Encounter()
-    {
-        // バトル相手となるEnemyを取得
-        enemy = GetEnemy();
+        enemyStatus.UpdateHp(enemyMaxHp, enemyMaxHp);
+        enemyStatus.UpdateName(enemyEntityStatus._name, enemyEntityStatus.lv);
 
         // バトルの設定をEnemyから適用する
-        SetBattleConfigByEnemy(enemy);
+        enemySetting = enemy.GetComponent<EnemySetting>();
+        SetBattleConfigByEnemySetting(enemySetting);
 
+        SetFungusVariables();
         ToggleBattleModeTo(true);
     }
 
@@ -143,44 +146,24 @@ public class BattleManager : MonoBehaviour
         // 表示を更新
         if (target.side == "player")
         {
-            playerStatus.UpdateHp(target.hp, GetMaxHp("player"));
+            playerStatus.UpdateHp(target.hp, playerEntityStatus.hp);
         }
         else if (target.side == "enemy")
         {
-            enemyStatus.UpdateHp(target.hp, GetMaxHp("enemy"));
+            enemyStatus.UpdateHp(target.hp, enemyEntityStatus.hp);
         }
     }
 
-
-    private Enemy GetEnemy()
-    {
-        // FlowChartからバトル相手となるEnemyを取得
-        GameObject enemyObject = flowchart.GetGameObjectVariable("enemy");
-        return enemyObject.GetComponent<Enemy>();
-    }
-
-    private int GetMaxHp(string side)
-    {
-        // FlowChartから取得
-        if (side == "player")
-        {
-            return (int)flowchart.GetIntegerVariable("player_hp");
-        }
-        else if (side == "enemy")
-        {
-            return (int)flowchart.GetIntegerVariable("enemy_hp");
-        }
-        else
-        {
-            return -1;
-        }
-    }
-
-    private void SetBattleConfigByEnemy(Enemy enemy)
+    private void SetBattleConfigByEnemySetting(EnemySetting enemySetting)
     {
         // Enemyからバトルの設定（主にAttackManager）を適用する
-        attackManager.animationCurve = enemy.animationCurve;
-        attackManager.duration = enemy.duration;
+        attackManager.animationCurve = enemySetting.animationCurve;
+        attackManager.duration = enemySetting.duration;
+    }
+
+    public void SetFungusVariables()
+    {
+        flowchart.SetStringVariable("player_name", playerEntityStatus._name);
     }
 
     private void BattleEndFlag(bool flag)

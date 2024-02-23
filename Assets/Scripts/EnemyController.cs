@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour {
 
     private Flowchart flowchart;
 
-    private Enemy enemy;
+    private EntityStatus enemyEntityStatus;
 
     private bool chaseFlag = true;
     private bool collided = false;
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour {
         controller = GetComponent<NPCController>();
 
         flowchart = controller.flowchart;
-        enemy = GetComponent<Enemy>();
+        enemyEntityStatus = GetComponent<EntityStatus>();
     }
 
     void Update() {
@@ -129,8 +129,7 @@ public class EnemyController : MonoBehaviour {
     {
         // FungusのVariablesに自身をenemyとして登録
         flowchart.SetGameObjectVariable("enemy", gameObject);
-        flowchart.SetStringVariable("enemy_name", enemy._name);
-        flowchart.SetIntegerVariable("enemy_lv", enemy.lv);
-        flowchart.SetIntegerVariable("enemy_hp", enemy.hp);
+        flowchart.SetStringVariable("enemy_name", enemyEntityStatus._name);
+        flowchart.SetIntegerVariable("enemy_lv", enemyEntityStatus.lv);
     }
 }

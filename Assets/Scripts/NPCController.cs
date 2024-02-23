@@ -22,8 +22,12 @@ public class NPCController : MonoBehaviour {
     [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか")]
     [SerializeField] private bool FireOnCollision;
     
+    [Tooltip("会話圏内に入っているかどうか")]
     public bool canActivate;
+
+    [Tooltip("会話終了後にEnableCanMove()するかどうか")]
     public bool canCallback;
+
     private bool isRunning;
 
 
