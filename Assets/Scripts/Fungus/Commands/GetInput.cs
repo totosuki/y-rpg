@@ -17,17 +17,10 @@ namespace Fungus {
 
         [Tooltip("Placeholder on inputfield")]
         [SerializeField] protected string placeholder;
-
-        [Tooltip("Send on end")]
-        [SerializeField] protected string endMessage;
         
         private GameObject input;
         private TMP_InputField _inputField;
         private InputManager inputManager;
-
-        protected virtual void SetVariable(string value) {
-            variable.Value = value;
-        }
 
         #region Public members
 
@@ -54,8 +47,18 @@ namespace Fungus {
             StartInput();
         }
 
+        private void StartInput() {
+            // Inputの設定
+            inputManager.SetPlaceholder(placeholder);
+            inputManager.SetVariableKey(variable.Key);
+
+            // 入力が終わったらコールバック
+            StartCoroutine(inputManager.StartInput(() => {
+                EndInput();
+            }));
+        }
+
         public void EndInput() {
-            SetVariable(_inputField.text);
             Continue();
         }
 
@@ -68,13 +71,6 @@ namespace Fungus {
 
         public override Color GetButtonColor() {
             return new Color32(216, 228, 170, 255);
-        }
-
-        private void StartInput() {
-            inputManager.SetPlaceholder(placeholder);
-            inputManager.SetVarKey(variable.Key);
-            inputManager.SetMessage(endMessage);
-            inputManager.StartInput();
         }
 
         #endregion
