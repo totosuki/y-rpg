@@ -2,6 +2,8 @@ using System.Collections;
 using System;
 using UnityEngine;
 using Fungus;
+using System.Collections.Generic;
+using System.Linq;
 
 
 public class NPCController : MonoBehaviour {
@@ -36,7 +38,7 @@ public class NPCController : MonoBehaviour {
     [Tooltip("単体メッセージ"), ConditionalDisableInInspector(nameof(multipleMessages), false)]
     public string message;
 
-    // ターン:メッセージの組
+    // ターン別メッセージリスト
     [Serializable]
     public class SerializableKeyPair<TKey, TValue>
     {
@@ -58,6 +60,10 @@ public class NPCController : MonoBehaviour {
     private bool inCollision = false;
     // 会話を止めないフラグ
     private bool dontstop;
+
+    // インスペクターのターン別メッセージリストをDictonaryに変換
+    private Dictionary<int, string> _messageListDictionary;
+    private Dictionary<int, string> messageListDictonary => _messageListDictionary ??= messageList.ToDictionary(p => p.Key, p => p.Value);
 
     void Start()
     {
@@ -161,11 +167,14 @@ public class NPCController : MonoBehaviour {
     {
         if (multipleMessages)
         {
-            // TODO リストから適したメッセージを送信
-            return;
+            // 今のターンを参照して対応するメッセージを送信
+            int turn = flowchart.GetIntegerVariable("turn");
+            string message = messageListDictonary[turn];
+            flowchart.SendFungusMessage(message);
         }
         else
         {
+            // 単体メッセージを送信
             flowchart.SendFungusMessage(message);
         }
     }
