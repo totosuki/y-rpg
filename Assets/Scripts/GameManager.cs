@@ -2,11 +2,13 @@ using Fungus;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TurnManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Flowchart flowchart;
     [SerializeField] private int turn;
+
+    [SerializeField] private GameObject playerObject;
 
     public UnityEvent onTurnUpdate = new UnityEvent();
 
@@ -29,9 +31,20 @@ public class TurnManager : MonoBehaviour
 
     public void SetTurnTo(int _turn)
     {
-        flowchart.SetIntegerVariable("turn", _turn);
+        flowchart.SetStringVariable("game_turn", $"{_turn}");
         turn = _turn;
 
         onTurnUpdate.Invoke();
     }
+
+    // public void OnSave()
+    // {
+    //     flowchart.SetGameObjectVariable("player_transform", playerObject);
+    // }
+
+    // public void OnLoad()
+    // {
+    //     print(playerObject.transform.position);
+    //     print(flowchart.GetGameObjectVariable("player_transform").transform.position);
+    // }
 }

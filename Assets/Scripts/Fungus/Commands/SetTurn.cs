@@ -13,19 +13,19 @@ namespace Fungus {
         [Tooltip("Turn")]
         [SerializeField] protected int turn;
 
-        private GameObject obj;
-        private TurnManager turnManager;
+        private GameObject gameManagerObject;
+        private GameManager gameManager;
         
         #region Public members
 
         void Start()
         {
-            obj = GameObject.Find("TurnManager");
-            turnManager = obj.GetComponent<TurnManager>();
+            gameManagerObject = GameObject.Find("GameManager");
+            gameManager = gameManagerObject.GetComponent<GameManager>();
         }
 
         public override void OnEnter() {
-            turnManager.SetTurnTo(turn);
+            gameManager.SetTurnTo(turn);
             Continue();
         }
 

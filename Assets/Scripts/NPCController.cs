@@ -13,8 +13,8 @@ public class NPCController : MonoBehaviour {
     private GameObject player;
     private PlayerController plc;
 
-    private GameObject turnManagerObject;
-    private TurnManager turnManager;
+    private GameObject gameManagerObject;
+    private GameManager gameManager;
 
     [SerializeField] private GameObject popup;
 
@@ -75,14 +75,14 @@ public class NPCController : MonoBehaviour {
         player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
 
-        turnManagerObject = GameObject.Find("TurnManager");
-        turnManager = turnManagerObject.GetComponent<TurnManager>();
+        gameManagerObject = GameObject.Find("GameManager");
+        gameManager = gameManagerObject.GetComponent<GameManager>();
 
         // メッセージの設定
         if (multipleMessages)
         {
             // ターンが更新されるたびにメッセージに更新が走るようにする
-            turnManager.onTurnUpdate.AddListener(UpdateCurrentTurnAndMessage);
+            gameManager.onTurnUpdate.AddListener(UpdateCurrentTurnAndMessage);
         }
         else
         {
@@ -193,7 +193,7 @@ public class NPCController : MonoBehaviour {
     {
         // ターンの更新時に呼び出される
         // currentTurnMessageを最新状態に更新
-        int turn = turnManager.GetCurrentTurn();
+        int turn = gameManager.GetCurrentTurn();
 
         if (messageListDictonary.ContainsKey(turn))
         {
