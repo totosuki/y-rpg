@@ -8,20 +8,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Flowchart flowchart;
     [SerializeField] private int turn;
 
-    [SerializeField] private GameObject playerObject;
-
     public UnityEvent onTurnUpdate = new UnityEvent();
 
-    private bool isCalledOnce = false;
+    private GameObject player;
 
-    void Update()
+    void Start()
     {
-        // 一通りの読み込みが終わった後で更新をかける
-        if (!isCalledOnce)
-        {
-            SetTurnTo(turn);
-            isCalledOnce = true;
-        }
+        player = GameObject.Find("Player");
     }
 
     public int GetCurrentTurn()
@@ -29,22 +22,21 @@ public class GameManager : MonoBehaviour
         return turn;
     }
 
-    public void SetTurnTo(int _turn)
+    public void OnSave()
     {
-        flowchart.SetStringVariable("game_turn", $"{_turn}");
-        turn = _turn;
+        turn = flowchart.GetIntegerVariable("turn");
+
+        flowchart.SetFloatVariable("player_x", player.transform.position.x);
+        flowchart.SetFloatVariable("player_y", player.transform.position.y);
 
         onTurnUpdate.Invoke();
     }
 
-    // public void OnSave()
-    // {
-    //     flowchart.SetGameObjectVariable("player_transform", playerObject);
-    // }
+    public void OnLoad()
+    {
+        float x = flowchart.GetFloatVariable("player_x");
+        float y = flowchart.GetFloatVariable("player_y");
 
-    // public void OnLoad()
-    // {
-    //     print(playerObject.transform.position);
-    //     print(flowchart.GetGameObjectVariable("player_transform").transform.position);
-    // }
+        player.transform.position = new Vector3(x, y);
+    }
 }
