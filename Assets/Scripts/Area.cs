@@ -52,13 +52,17 @@ public class Area : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             inArea = true;
-            areaManager.ShowAreaInfo(areaName, subtitle);
-            
+
             // エリア侵入メッセージを送信
             if (sendEnterMessage)
             {
-                areaManager.SendOnAreaEnterMessage(currentTurnMessage);
+                if (currentTurnMessage != "")
+                {
+                    areaManager.SendOnAreaEnterMessage(currentTurnMessage);
+                }
             }
+
+            areaManager.ShowAreaInfo(areaName, subtitle);
         }
     }
 
@@ -83,6 +87,10 @@ public class Area : MonoBehaviour
         if (messageListDictonary.ContainsKey(turn))
         {
             currentTurnMessage = messageListDictonary[turn];
+        }
+        else
+        {
+            currentTurnMessage = "";
         }
     }
 }
