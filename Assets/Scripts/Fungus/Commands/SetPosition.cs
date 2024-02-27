@@ -30,7 +30,7 @@ namespace Fungus {
 
 
         protected virtual void SetNewPosition() {
-            targetObject.transform.position = GetNewPosition();
+            targetObject.transform.localPosition = GetNewPosition();
         }
 
         protected virtual Vector2 GetNewPosition() {

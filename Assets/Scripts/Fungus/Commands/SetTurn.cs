@@ -48,10 +48,11 @@ namespace Fungus
             DoSetOperation();
 
             // == ターン更新時にまとめて行う処理 == //
-            // デバッグ用
-            print($"-- Turn 5 --");
             int turn = (int)anyVar.data.integerData;
-
+            
+            // デバッグ用
+            print($"-- Turn {turn} --");
+            
             gameManager.SetTurn(turn);
             gameManager.OnSave();
 
