@@ -17,7 +17,14 @@ namespace Fungus {
         private PlayerController plc;
 
         protected virtual void UpdateCanMove() {
-            plc.canMove = canMove;
+            if (canMove)
+            {
+                plc.EnableCanMove();
+            }
+            else
+            {
+                plc.DisableCanMove();
+            }
         }
 
         #region Public members

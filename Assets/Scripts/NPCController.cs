@@ -82,7 +82,7 @@ public class NPCController : MonoBehaviour {
         if (multipleMessages)
         {
             // ターンが更新されるたびにメッセージに更新が走るようにする
-            gameManager.onTurnUpdate.AddListener(UpdateCurrentTurnAndMessage);
+            gameManager.onTurnUpdate.AddListener(UpdateCurrentTurnMessage);
         }
         else
         {
@@ -189,7 +189,7 @@ public class NPCController : MonoBehaviour {
         flowchart.SendFungusMessage(currentTurnMessage);
     }
 
-    void UpdateCurrentTurnAndMessage()
+    void UpdateCurrentTurnMessage()
     {
         // ターンの更新時に呼び出される
         // currentTurnMessageを最新状態に更新

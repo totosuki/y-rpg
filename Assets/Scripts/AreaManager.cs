@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Fungus;
 using UnityEngine;
 
 public class AreaManager : MonoBehaviour
 {
     public AreaInfo areaInfo;
+
+    public GameManager gameManager;
 
     [Tooltip("一定時間は同じエリア移動を再通知しない")]
     [SerializeField]private int rememberTime;
@@ -31,5 +34,11 @@ public class AreaManager : MonoBehaviour
             areaInfo.SetInfo(areaName, subtitle);
             areaInfo.Show();
         }
+    }
+
+    // Areaから使う
+    public void SendOnAreaEnterMessage(string message)
+    {
+        gameManager.SendFungusMessage(message);
     }
 }
