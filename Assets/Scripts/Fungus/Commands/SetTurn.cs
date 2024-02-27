@@ -40,7 +40,6 @@ namespace Fungus
 
         public override void OnEnter()
         {
-            print(gameManager);
             if (gameManager == null)
             {
                 Continue();
@@ -49,6 +48,8 @@ namespace Fungus
             DoSetOperation();
 
             // == ターン更新時にまとめて行う処理 == //
+            // デバッグ用
+            print($"-- Turn 5 --");
             int turn = (int)anyVar.data.integerData;
 
             gameManager.SetTurn(turn);

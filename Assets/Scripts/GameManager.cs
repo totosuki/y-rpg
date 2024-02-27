@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     // GameManagerのターンを同期する処理
     public void SetTurn(int _turn)
     {
-        print(_turn);
         turn = _turn;
     }
 

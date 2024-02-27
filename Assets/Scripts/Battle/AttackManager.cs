@@ -33,8 +33,6 @@ public class AttackManager : MonoBehaviour
     {
         flowchart = GetComponentInParent<BattleManager>().flowchart;
 
-        print(flowchart);
-
         float barHeight = bar.GetComponent<RectTransform>().sizeDelta.y;
 
         Vector2 pointerPos = pointer.transform.localPosition;
