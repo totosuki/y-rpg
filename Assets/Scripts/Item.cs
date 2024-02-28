@@ -1,14 +1,18 @@
 using UnityEngine;
 
-public class ItemScript : MonoBehaviour
+public class Item : MonoBehaviour
 {
-    public enum ItemType { None, Coin }
+    public enum ItemType { None, Item, Coin }
 
     [Header("アイテム設定")]
     [SerializeField]
     private ItemType itemType = ItemType.None;
 
     private string playerTag = "Player";
+
+    private void ItemTriggerEnter() {
+        Debug.Log("[ItemScript] アイテムを取った");
+    }
 
     private void CoinTriggerEnter() {
         Debug.Log("[ItemScript] コインを取った");
@@ -21,6 +25,9 @@ public class ItemScript : MonoBehaviour
             Debug.Log("[ItemScript] OnTriggerEnter2D");
 
             switch (itemType) {
+                case ItemType.Item:
+                    ItemTriggerEnter();
+                    break;
                 case ItemType.Coin:
                     CoinTriggerEnter();
                     break;
