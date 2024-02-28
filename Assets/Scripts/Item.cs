@@ -11,6 +11,9 @@ public class Item : MonoBehaviour
     [Header("アイテムのID")]
     public int itemId;
 
+    [Header("アイテムの名前")]
+    public string itemName;
+
     [Header("アイテムの説明")]
     [TextArea(3, 10)]
     public string description;
