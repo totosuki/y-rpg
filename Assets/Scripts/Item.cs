@@ -4,6 +4,9 @@ public class Item : MonoBehaviour
 {
     public enum ItemType { None, Item, Coin }
 
+    [SerializeField]
+    private ItemManager itemManager;
+
     [Header("アイテムの設定")]
     [SerializeField]
     private ItemType itemType = ItemType.None;
@@ -20,7 +23,7 @@ public class Item : MonoBehaviour
 
     private void ItemTriggerEnter() 
     {
-        Debug.Log("[ItemScript] アイテムを取った");
+        itemManager.AddCollectItemBit(itemId);
     }
 
     private void CoinTriggerEnter() 
@@ -42,7 +45,7 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player") {
             CollectItem();

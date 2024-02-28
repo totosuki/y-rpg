@@ -260,6 +260,10 @@ PrefabInstance:
       propertyPath: description
       value: java
       objectReference: {fileID: 0}
+    - target: {fileID: 233023830218140674, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
+      propertyPath: itemManager
+      value: 
+      objectReference: {fileID: 2127716590}
     - target: {fileID: 6882873223033524188, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11233,6 +11237,10 @@ PrefabInstance:
       propertyPath: description
       value: python
       objectReference: {fileID: 0}
+    - target: {fileID: 233023830218140674, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
+      propertyPath: itemManager
+      value: 
+      objectReference: {fileID: 2127716590}
     - target: {fileID: 6882873223033524188, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -11661,6 +11669,10 @@ PrefabInstance:
       propertyPath: description
       value: fish
       objectReference: {fileID: 0}
+    - target: {fileID: 233023830218140674, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
+      propertyPath: itemManager
+      value: 
+      objectReference: {fileID: 2127716590}
     - target: {fileID: 6882873223033524188, guid: 1a69da93bd5ae48bba245e2d04f48644, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -69284,6 +69296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7713c385cced485bba59d9defb635ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberOfItems: 3
 --- !u!1001 &2094827918499508345
 PrefabInstance:
   m_ObjectHideFlags: 0
