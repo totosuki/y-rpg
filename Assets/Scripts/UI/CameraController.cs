@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Threading.Tasks;
 
-public class CameraController : MonoBehaviour
-{
-    private bool opening = true;
+public class CameraController : MonoBehaviour {
+    private bool opening;
 
-    void Update()
-    {
-        if (opening) ShowMap();
+    void Update() {
+        if (opening) ScrollMap();
     }
 
     public void FollowObject(GameObject targetObject)
@@ -19,18 +14,22 @@ public class CameraController : MonoBehaviour
         transform.localPosition = new Vector3(0, 0, -10);
     }
 
-    public void StopOpening()
+    void ScrollMap()
     {
-        opening = false;
-    }
-
-    void ShowMap()
-    {
-        if (transform.position.y >= 3.0f)
-        {
-            StopOpening();
-        }   
+        if (transform.position.y >= 3.0f) {
+            StopScroll();
+        }
 
         transform.position += new Vector3(0.0f, 0.001f, 0.0f);
+    }
+
+    public void StartScroll()
+    {
+        opening = true;
+    }
+
+    public void StopScroll()
+    {
+        opening = false;
     }
 }
