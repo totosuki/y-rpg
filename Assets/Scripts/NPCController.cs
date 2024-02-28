@@ -16,26 +16,10 @@ public class NPCController : MonoBehaviour {
     private GameObject gameManagerObject;
     private GameManager gameManager;
 
-    [SerializeField] private GameObject popup;
-
-    public enum TypeEnum { NPC, ACTOR_NPC, ENEMY }
-
-    // === NPC設定 インスペクターでいじるだけ === //
-    [Header("NPC設定")]
-
-    [Tooltip("NPCのタイプ")]
-    [SerializeField]private TypeEnum type = TypeEnum.NPC;
-
-    // never used 警告避け
-    TypeEnum Pass() => type;
-
-    [Tooltip("当たり判定への侵入をトリガーに会話を始めるかどうか"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
-    [SerializeField] private bool fireOnCollision;
-
     // メッセージ設定
     [Header("メッセージ設定")]
 
-    [Tooltip("ターン別メッセージを使用可能にする"), ConditionalDisableInInspector(nameof(type), (int)TypeEnum.NPC, conditionalInvisible: true)]
+    [Tooltip("ターン別メッセージを使用可能にする")]
     [SerializeField] private bool multipleMessages;
 
     [Tooltip("単体メッセージ"), ConditionalDisableInInspector(nameof(multipleMessages), false)]
@@ -58,9 +42,6 @@ public class NPCController : MonoBehaviour {
     [SerializeField] private SerializableKeyPair<int,string>[] messageList = default;
 
     // === === //
-
-    // 会話可能圏内に入っているかどうか
-    private bool inCollision = false;
     // 会話を止めないフラグ
     private bool dontstop;
 
@@ -89,42 +70,11 @@ public class NPCController : MonoBehaviour {
             // 単体メッセージを登録
             currentTurnMessage = message;
         }
-        
-        popup = transform.GetChild(0).gameObject;
-        // 設定を適用
-        SetTypeTo(type);
-    }
-
-    void Update()
-    {
-        // 会話可能 && 会話可能圏内にいる
-        if (type == TypeEnum.NPC && IsPlayerInCollision())
-        {
-            // クリックされたらいつでも会話できる状態にする
-            if (Input.GetMouseButtonDown(0) || fireOnCollision)
-            {
-                StartTalk();
-            }
-            popup.SetActive(true);
-        }
-        else
-        {
-            popup.SetActive(false);
-        }
-    }
-
-    // 新しいタイプを適用する
-    public void SetTypeTo(TypeEnum _type)
-    {
-        type = _type;
     }
 
     // Fungusを呼び出して会話を始める
     IEnumerator Talk(Action callback)
     {
-        // 会話開始
-        SetTypeTo(TypeEnum.ACTOR_NPC);
-
         // Flowchartから会話を呼び出し
         SendFungusMessage();
 
@@ -160,15 +110,6 @@ public class NPCController : MonoBehaviour {
             return false;
         });
 
-        // 会話終了
-        SetTypeTo(TypeEnum.NPC);
-
-        // 無限ループ防止
-        if (fireOnCollision)
-        {
-            fireOnCollision = false;
-        }
-
         // 会話終了時にコールバック
         callback();
     }
@@ -198,42 +139,7 @@ public class NPCController : MonoBehaviour {
         if (messageListDictonary.ContainsKey(turn))
         {
             currentTurnMessage = messageListDictonary[turn];
-
-            if (type == TypeEnum.ACTOR_NPC)
-            {
-                SetTypeTo(TypeEnum.NPC);
-            }
         }
-        else
-        {
-            SetTypeTo(TypeEnum.ACTOR_NPC);
-        }
-    }
-
-    // 当たり判定
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            inCollision = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            if (inCollision)
-            {
-                inCollision = false;
-            }
-        }
-    }
-    
-    // EnemyControllerから
-    public bool IsPlayerInCollision()
-    {
-        return inCollision;
     }
 
     // 一回会話終了を見送る

@@ -5,6 +5,8 @@ public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
     private NPCController controller;
 
+    [SerializeField] private InteractionTrigger interactionTrigger;
+
     private GameObject player;
 
     private Flowchart flowchart;
@@ -25,7 +27,7 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Update() {
-        if (controller.IsPlayerInCollision()) {
+        if (interactionTrigger.IsPlayerInCollision()) {
             // プレイヤーを認識したら追跡開始
             int playerFacing = GetPlayerFacing();
 

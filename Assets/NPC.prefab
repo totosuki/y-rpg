@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2094827918355497746}
   - component: {fileID: 2094827918355497747}
   - component: {fileID: 2094827918355497744}
+  - component: {fileID: 2424384240678872275}
   - component: {fileID: 875756675914614279}
   - component: {fileID: 2094827918355497745}
   - component: {fileID: 2094827918355497758}
@@ -80,13 +81,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5204b3fd3b19b45fd86846c6194d3811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: 
   flowchart: {fileID: 0}
   popup: {fileID: 2094827919165864354}
-  canTalk: 1
-  FireOnCollision: 0
-  canActivate: 0
-  canCallback: 0
+  multipleMessages: 0
+  message: 
+  messageList: []
+--- !u!114 &2424384240678872275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094827918355497756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06e511b8104d40359d8c0fc2c1c78e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  fireOnCollision: 0
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &875756675914614279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094827919165864357}
   - component: {fileID: 2094827919165864356}
+  - component: {fileID: 1704608150940336825}
   m_Layer: 0
   m_Name: Popup
   m_TagString: Untagged
@@ -346,3 +363,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1704608150940336825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094827919165864354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac00b1f4ac50d436cb69d768d67770f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionTrigger: {fileID: 2424384240678872275}
+  spriteRenderer: {fileID: 2094827919165864356}
