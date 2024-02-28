@@ -4,9 +4,16 @@ public class Item : MonoBehaviour
 {
     public enum ItemType { None, Item, Coin }
 
-    [Header("アイテム設定")]
+    [Header("アイテムの設定")]
     [SerializeField]
     private ItemType itemType = ItemType.None;
+    
+    [Header("アイテムのID")]
+    public int itemId;
+
+    [Header("アイテムの説明")]
+    [TextArea(3, 10)]
+    public string description;
 
     private void ItemTriggerEnter() 
     {
@@ -18,7 +25,7 @@ public class Item : MonoBehaviour
         Debug.Log("[ItemScript] コインを取った");
     }
 
-    public void GetItem() 
+    public void CollectItem() 
     {
         switch (itemType) {
             case ItemType.Item:
@@ -35,7 +42,7 @@ public class Item : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player") {
-            GetItem();
+            CollectItem();
             Destroy(gameObject);
         }
     }
