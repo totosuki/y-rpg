@@ -1,13 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Fungus;
-using UnityEditor.EditorTools;
 
 
-public class NPCController : MonoBehaviour
-{
+public class NPCController : MonoBehaviour {
     [Tooltip("会話開始Fungusメッセージ")]
     public string message;
 
@@ -30,34 +27,28 @@ public class NPCController : MonoBehaviour
     private bool isRunning;
 
 
-    void Start()
-    {
+    void Start() {
         player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
         popup = transform.GetChild(0).gameObject;
     }
 
-    void Update()
-    {
-        if (canActivate && canTalk && !isRunning)
-        {
-            if (Input.GetMouseButtonDown(0) || FireOnCollision)
-            {
+    void Update() {
+        if (canActivate && canTalk && !isRunning) {
+            if (Input.GetMouseButtonDown(0) || FireOnCollision) {
                 StartTalk();
                 // 無限ループ防止
                 if (FireOnCollision) FireOnCollision = false;
             }
             popup.SetActive(true);
         }
-        else
-        {
+        else {
             popup.SetActive(false);
         }
     }
 
     // Fungusを呼び出して会話を始める
-    IEnumerator Talk(Action callback)
-    {
+    IEnumerator Talk(Action callback) {
         isRunning = true;
         canCallback = true;
 
@@ -69,8 +60,7 @@ public class NPCController : MonoBehaviour
         isRunning = false;
     }
 
-    public void StartTalk()
-    {
+    public void StartTalk() {
         plc.DisableCanMove();
 
         StartCoroutine(Talk(() => {
@@ -80,24 +70,20 @@ public class NPCController : MonoBehaviour
     }
 
     // 当たり判定
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player") canActivate = true;
     }
 
-    void OnTriggerExit2D(Collider2D other)
-    {
+    void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Player") canActivate = false;
     }
 
-    public void DisableCanActivate()
-    {
+    public void DisableCanActivate() {
         canActivate = false;
     }
 
     // 呼び出すと一回だけコールバックを無効化
-    public void DisableCallback()
-    {
+    public void DisableCallback() {
         canCallback = false;
     }
 }

@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleLoader : MonoBehaviour
-{
+public class BattleLoader : MonoBehaviour {
     public Fader base1;
     public Fader base2;
     public Fader player;
@@ -14,13 +11,11 @@ public class BattleLoader : MonoBehaviour
     public ToggleDisplay status2;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         gameObject.SetActive(false);
     }
 
-    public void LoadBattle()
-    {
+    public void LoadBattle() {
         gameObject.SetActive(true);
 
         base1.InvokeFade();
@@ -33,8 +28,7 @@ public class BattleLoader : MonoBehaviour
         enemy.InvokeFade();
     }
 
-    public void endBattle()
-    {
+    public void endBattle() {
         gameObject.SetActive(false);
     }
 }
