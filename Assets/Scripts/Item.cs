@@ -8,33 +8,34 @@ public class Item : MonoBehaviour
     [SerializeField]
     private ItemType itemType = ItemType.None;
 
-    private string playerTag = "Player";
-
-    private void ItemTriggerEnter() {
+    private void ItemTriggerEnter() 
+    {
         Debug.Log("[ItemScript] アイテムを取った");
     }
 
-    private void CoinTriggerEnter() {
+    private void CoinTriggerEnter() 
+    {
         Debug.Log("[ItemScript] コインを取った");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void GetItem() 
     {
-        if (collision.CompareTag(playerTag))
-        {
-            Debug.Log("[ItemScript] OnTriggerEnter2D");
+        switch (itemType) {
+            case ItemType.Item:
+                ItemTriggerEnter();
+                break;
+            case ItemType.Coin:
+                CoinTriggerEnter();
+                break;
+            default:
+                break;
+        }
+    }
 
-            switch (itemType) {
-                case ItemType.Item:
-                    ItemTriggerEnter();
-                    break;
-                case ItemType.Coin:
-                    CoinTriggerEnter();
-                    break;
-                default:
-                    break;
-            }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player") {
+            GetItem();
             Destroy(gameObject);
         }
     }
