@@ -3,9 +3,9 @@ using Fungus;
 
 public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
-    private NPCController controller;
 
     [SerializeField] private InteractionTrigger interactionTrigger;
+    [SerializeField] private MessageTrigger messageTrigger;
 
     private GameObject player;
 
@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour {
     void Start() {
         player = GameObject.Find("Player");
         animController = GetComponent<NPCAnimController>();
-        controller = GetComponent<NPCController>();
         enemyEntityStatus = GetComponent<EntityStatus>();
     }
 
@@ -113,7 +112,7 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("battle!");
         animController.StopWalk();
         // ここの場合はバトル開始
-        controller.StartTalk();
+        messageTrigger.InvokeBlock();
     }
 
     void Encountered()

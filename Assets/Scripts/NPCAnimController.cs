@@ -12,11 +12,9 @@ public class NPCAnimController : MonoBehaviour {
     [SerializeField]
     private Animator animator;
     private Rigidbody2D rb;
-    private NPCController npcController;
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
-        npcController = GetComponent<NPCController>();
     }
 
     void Update() {
