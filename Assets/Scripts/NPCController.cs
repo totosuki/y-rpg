@@ -10,10 +10,8 @@ public class NPCController : MonoBehaviour {
     // Fungus
     public Flowchart flowchart;
 
-    private GameObject player;
     private PlayerController plc;
 
-    private GameObject gameManagerObject;
     private GameManager gameManager;
 
     // メッセージ設定
@@ -53,10 +51,16 @@ public class NPCController : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        GameObject player = GameObject.Find("Player");
         plc = player.GetComponent<PlayerController>();
 
-        gameManagerObject = GameObject.Find("GameManager");
+        if (flowchart == null)
+        {
+            GameObject flowchartObject = GameObject.Find("Flowchart");
+            flowchart = flowchartObject.GetComponent<Flowchart>();
+        }
+
+        GameObject gameManagerObject = GameObject.Find("GameManager");
         gameManager = gameManagerObject.GetComponent<GameManager>();
 
         // メッセージの設定
@@ -73,9 +77,10 @@ public class NPCController : MonoBehaviour {
     }
 
     // Fungusを呼び出して会話を始める
-    IEnumerator Talk(Action callback)
+    public IEnumerator Talk(Action callback)
     {
         // Flowchartから会話を呼び出し
+        print("talk started");
         SendFungusMessage();
 
         // 会話終了の待機

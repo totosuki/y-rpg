@@ -5,18 +5,18 @@ public class InteractionTrigger : MonoBehaviour
 {
 
     [Tooltip("インタラクト可能か")]
-    [SerializeField]private bool interactable;
+    [SerializeField] protected bool interactable;
 
     [Tooltip("当たり判定内に入っただけでイベントを発火するか")]
-    [SerializeField]private bool fireOnCollision;
+    [SerializeField] protected bool fireOnCollision;
 
     // インタラクト時に発動されるイベント
-    public UnityEvent onInteract = new UnityEvent();
+    [HideInInspector] public UnityEvent onInteract = new UnityEvent();
 
     // 当たり判定内にいるかどうかの状態保持
     private bool inCollision;
 
-    private bool interacted;
+    protected bool interacted;
 
     void Update()
     {
@@ -25,7 +25,6 @@ public class InteractionTrigger : MonoBehaviour
         {
             return;
         }
-        // インタラクト可能 かつ 当たり判定内にいる
         if (interactable && inCollision)
         {
             // クリックでイベントを発動
@@ -33,11 +32,7 @@ public class InteractionTrigger : MonoBehaviour
             if (Input.GetMouseButtonDown(0) || fireOnCollision)
             {
                 onInteract.Invoke();
-
-                if (fireOnCollision)
-                {
-                    interacted = true;
-                }
+                interacted = true;
             }
         }
     }
@@ -58,18 +53,19 @@ public class InteractionTrigger : MonoBehaviour
             if (inCollision)
             {
                 inCollision = false;
-
-                if (fireOnCollision)
-                {
-                    interacted = false;
-                }
+                interacted = false;
             }
         }
     }
     
-    // 当たり判定内にプレイヤーがいるかどうか
-    public bool IsPlayerInCollision()
+    // インタラクト可能かどうか
+    public bool CanInteract()
     {
-        return inCollision;
+        return interactable && inCollision;
+    }
+
+    public void SetInteractable(bool flag)
+    {
+        interactable = flag;
     }
 }

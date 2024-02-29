@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour {
 
     private GameObject player;
 
-    private Flowchart flowchart;
+    public Flowchart flowchart;
 
     private EntityStatus enemyEntityStatus;
 
@@ -21,13 +21,11 @@ public class EnemyController : MonoBehaviour {
         player = GameObject.Find("Player");
         animController = GetComponent<NPCAnimController>();
         controller = GetComponent<NPCController>();
-
-        flowchart = controller.flowchart;
         enemyEntityStatus = GetComponent<EntityStatus>();
     }
 
     void Update() {
-        if (interactionTrigger.IsPlayerInCollision()) {
+        if (interactionTrigger.CanInteract()) {
             // プレイヤーを認識したら追跡開始
             int playerFacing = GetPlayerFacing();
 
@@ -116,10 +114,6 @@ public class EnemyController : MonoBehaviour {
         animController.StopWalk();
         // ここの場合はバトル開始
         controller.StartTalk();
-    }
-
-    public void Hide() {
-        gameObject.SetActive(false);
     }
 
     void Encountered()

@@ -14,7 +14,7 @@ public class PopupController : MonoBehaviour
     void Update()
     {
         // 会話可能圏内にいる時、ポップアップを表示
-        if (interactionTrigger.IsPlayerInCollision())
+        if (interactionTrigger.CanInteract())
         {
             spriteRenderer.enabled = true;
         }
