@@ -18,7 +18,6 @@ public class ItemWindowManager : MonoBehaviour
 
     private void UpdateItemImage()
     {
-        Debug.Log("[ItemWindowManager] UpdateItemImage");
         for (int i = 0; i < itemManager.numberOfItems; i++) 
         {
             Item item = itemManager.GetItem(i);
@@ -42,14 +41,14 @@ public class ItemWindowManager : MonoBehaviour
 
     public void OnClickWindowButton()
     {
-        Debug.Log("[ItemWindowManager] OnClickWindowButton");
         itemPanel.SetActive(!itemPanel.activeSelf);
         UpdateItemImage(); // アイテムウィンドウが開いたときにアイテムの画像を更新
     }
 
     public void OnClickItemImage(int id)
     {
-        Debug.Log("[ItemWindowManager] id : " + id);
+        if (id >= itemManager.numberOfItems) return;
+        if (itemManager.collectItemList[id] == false) return;
         UpdateIcon(id);
     }
 
