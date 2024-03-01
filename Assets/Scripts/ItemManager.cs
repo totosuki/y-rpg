@@ -44,9 +44,13 @@ public class ItemManager : MonoBehaviour
         return items;
     }
 
-    public List<Item> GetItem() 
+    public Item GetItem(int id) 
     {
-        return items;
+        if (id < 0 || id >= numberOfItems) 
+        {
+            return null;
+        }
+        return items[id];
     }
 
     void Awake() 
