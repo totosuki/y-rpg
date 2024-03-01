@@ -49,7 +49,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.tag == "Player") {
             CollectItem();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -658,7 +658,7 @@ MonoBehaviour:
   itemPanel: {fileID: 336000846}
   iconText: {fileID: 1442731837}
   iconDescription: {fileID: 1891200459}
-  iconImage: {fileID: 1968145107}
+  iconImage: {fileID: 1968145109}
 --- !u!1 &79709054
 GameObject:
   m_ObjectHideFlags: 0
@@ -57207,7 +57207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
