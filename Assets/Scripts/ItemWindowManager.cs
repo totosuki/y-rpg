@@ -9,4 +9,9 @@ public class ItemWindowManager : MonoBehaviour
         Debug.Log("[ItemWindowManager] OnClickWindowButton");
         itemPanel.SetActive(!itemPanel.activeSelf);
     }
+
+    public void OnClickItemImage(GameObject clickedImage) 
+    {
+        Debug.Log($"[ItemWindowManager] OnClickItemImage: {clickedImage.name}");
+    }
 }
