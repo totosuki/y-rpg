@@ -41,8 +41,15 @@ public class ItemWindowManager : MonoBehaviour
 
     public void OnClickWindowButton()
     {
-        itemPanel.SetActive(!itemPanel.activeSelf);
-        UpdateItemImage(); // アイテムウィンドウが開いたときにアイテムの画像を更新
+        if (itemPanel.activeSelf == false)
+        {
+            itemPanel.SetActive(true);
+            UpdateItemImage(); // アイテムウィンドウが開いたときにアイテムの画像を更新
+        }
+        else 
+        {
+            itemPanel.SetActive(false);
+        }
     }
 
     public void OnClickItemImage(int id)
