@@ -17,6 +17,7 @@ public class AreaManager : MonoBehaviour
 
     public void RememberArea(string areaName)
     {
+        // 数秒間記憶する
         rememberList.Add(areaName);
         StartCoroutine(RemoveAreaFromRememberList(areaName));
     }
@@ -34,11 +35,5 @@ public class AreaManager : MonoBehaviour
             areaInfo.SetInfo(areaName, subtitle);
             areaInfo.Show();
         }
-    }
-
-    // Areaから使う
-    public void SendOnAreaEnterMessage(string message)
-    {
-        gameManager.SendFungusMessage(message);
     }
 }

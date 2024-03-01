@@ -57,7 +57,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301335084432767339}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 43dfaf4207fbe4a808e9923a6756bfa4, type: 3}
   m_Name: 
@@ -66,9 +66,21 @@ MonoBehaviour:
   fireOnCollision: 1
   onInteract:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 301335084432767341}
+        m_TargetAssemblyTypeName: Area, Assembly-CSharp
+        m_MethodName: ShowAreaInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isEnemy: 0
   message: 
-  flowchart: {fileID: 0}
 --- !u!114 &3124982104124291230
 MonoBehaviour:
   m_ObjectHideFlags: 0
