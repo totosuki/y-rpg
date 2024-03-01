@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 301335084432767338}
   - component: {fileID: 301335084432767341}
+  - component: {fileID: 1690936031038579364}
+  - component: {fileID: 3124982104124291230}
   - component: {fileID: 301335084432767343}
   - component: {fileID: 301335084432767340}
   m_Layer: 0
@@ -48,6 +50,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   areaName: AreaName
   subtitle: Description
+--- !u!114 &1690936031038579364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301335084432767339}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dfaf4207fbe4a808e9923a6756bfa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  fireOnCollision: 1
+  onInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  message: 
+  flowchart: {fileID: 0}
+--- !u!114 &3124982104124291230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301335084432767339}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f5373d63c9d4dddba719903390aff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageTrigger: {fileID: 1690936031038579364}
+  messageList: []
 --- !u!1839735485 &301335084432767343
 Tilemap:
   m_ObjectHideFlags: 0

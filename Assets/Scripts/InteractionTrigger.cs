@@ -33,6 +33,11 @@ public class InteractionTrigger : MonoBehaviour
             {
                 onInteract.Invoke();
                 interacted = true;
+                
+                if (fireOnCollision)
+                {
+                    inCollision = false;
+                }
             }
         }
     }
@@ -66,6 +71,9 @@ public class InteractionTrigger : MonoBehaviour
 
     public void SetInteractable(bool flag)
     {
-        interactable = flag;
+        if (!fireOnCollision)
+        {
+            interactable = flag;
+        }
     }
 }
