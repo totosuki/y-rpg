@@ -10,6 +10,8 @@ public class ItemManager : MonoBehaviour
 
     private int collectItemBit;
 
+    private List<Item> items; // Itemクラスのリストを作成
+
 
     public void AddCollectItemBit(int itemId) 
     {
@@ -30,6 +32,23 @@ public class ItemManager : MonoBehaviour
         }
     }
 
+    private List<Item> initItems() 
+    {
+        List<Item> items = new List<Item>();
+        for (int i = 0; i < numberOfItems; i++) 
+        {
+            GameObject itemObject = transform.GetChild(i).gameObject;
+            Item item = itemObject.GetComponent<Item>();
+            items.Add(item);
+        }
+        return items;
+    }
+
+    public List<Item> GetItem() 
+    {
+        return items;
+    }
+
     void Awake() 
     {
         collectItemBit = PlayerPrefs.GetInt("CollectItemBit", 0);
@@ -39,6 +58,8 @@ public class ItemManager : MonoBehaviour
         }
 
         InitCollectItem(); // デバッグで初期化したいときはコメントアウトを外す
+
+        items = initItems();
     }
 
     void OnApplicationQuit() 
