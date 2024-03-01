@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using Fungus;
+using System.Collections;
+using System;
 
 /// <summary>
 /// InputField・GetInputコマンドなどの補助を行う
@@ -14,8 +16,9 @@ public class InputManager : MonoBehaviour {
     private TMP_InputField _inputField;
     private TMP_Text placeholder;
 
-    private string varKey;
-    private string message;
+    private string variableKey;
+
+    private bool isInputFinished;
 
     void Start() {
         input = gameObject;
@@ -30,36 +33,33 @@ public class InputManager : MonoBehaviour {
         _inputField.text = "";
     }
 
-    public void StartInput() {
+    public IEnumerator StartInput(Action callback) {
+        // 入力を開始
         InitInput();
-        // 表示
         input.SetActive(true);
+
+        // 入力が終わったらコールバック
+        yield return new WaitUntil(() => isInputFinished);
+        callback();
     }
 
     public void EndInput() {
-        // 非表示
+        // Inputを非表示
         input.SetActive(false);
         
-        if (varKey == null) {
-            return;
+        if (variableKey != null) {
+            string value = _inputField.text;
+            flowchart.SetStringVariable(variableKey, value);
         }
-
-        string value = _inputField.text;
-        flowchart.SetStringVariable(varKey, value);
-
-        // メッセージで終了を通知
-        flowchart.SendFungusMessage(message);
+        
+        isInputFinished = true;
     }
 
     public void SetPlaceholder(string text) {
         placeholder.text = text;
     }
 
-    public void SetVarKey(string key) {
-        varKey = key;
-    }
-
-    public void SetMessage(string msg) {
-        message = msg;
+    public void SetVariableKey(string key) {
+        variableKey = key;
     }
 }

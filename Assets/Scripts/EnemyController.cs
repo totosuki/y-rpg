@@ -1,10 +1,17 @@
 using UnityEngine;
+using Fungus;
 
 public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
-    private NPCController controller;
+
+    [SerializeField] private InteractionTrigger interactionTrigger;
+    [SerializeField] private MessageTrigger messageTrigger;
 
     private GameObject player;
+
+    public Flowchart flowchart;
+
+    private EntityStatus enemyEntityStatus;
 
     private bool chaseFlag = true;
     private bool collided = false;
@@ -13,11 +20,12 @@ public class EnemyController : MonoBehaviour {
     void Start() {
         player = GameObject.Find("Player");
         animController = GetComponent<NPCAnimController>();
-        controller = GetComponent<NPCController>();
+        enemyEntityStatus = GetComponent<EntityStatus>();
     }
 
     void Update() {
-        if (controller.canActivate) {
+        if (interactionTrigger.CanInteract()) {
+            // プレイヤーを認識したら追跡開始
             int playerFacing = GetPlayerFacing();
 
             // playerFacingの値が変わった時に実行
@@ -85,7 +93,7 @@ public class EnemyController : MonoBehaviour {
 
         if (collided) {
             collided = false;
-            StartBattle();
+            Encountered();
         }
         else {
             collided = true;
@@ -104,10 +112,20 @@ public class EnemyController : MonoBehaviour {
         Debug.Log("battle!");
         animController.StopWalk();
         // ここの場合はバトル開始
-        controller.StartTalk();
+        messageTrigger.InvokeBlock();
     }
 
-    public void Hide() {
-        gameObject.SetActive(false);
+    void Encountered()
+    {
+        SetSelfAsEnemy();
+        StartBattle();
+    }
+
+    void SetSelfAsEnemy()
+    {
+        // FungusのVariablesに自身をenemyとして登録
+        flowchart.SetGameObjectVariable("enemy", gameObject);
+        flowchart.SetStringVariable("enemy_name", enemyEntityStatus._name);
+        flowchart.SetIntegerVariable("enemy_lv", enemyEntityStatus.lv);
     }
 }
