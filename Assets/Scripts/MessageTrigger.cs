@@ -6,11 +6,13 @@ using UnityEngine;
 
 public class MessageTrigger : InteractionTrigger
 {
+    [SerializeField] private bool isEnemy;
+
+    [ConditionalDisableInInspector(nameof(isEnemy), false, conditionalInvisible: true)]
     public string message;
 
-    [SerializeField] private Flowchart flowchart;
+    private Flowchart flowchart;
     private PlayerController playerController;
-    
     private bool dontstop;
 
     // Start is called before the first frame update
@@ -19,11 +21,20 @@ public class MessageTrigger : InteractionTrigger
         GameObject player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
 
-        if (flowchart == null)
+        string flowchartName;
+
+        if (isEnemy)
         {
-            GameObject flowchartObject = GameObject.Find("Flowchart");
-            flowchart = flowchartObject.GetComponent<Flowchart>();
+            message = "encounter";
+            flowchartName = "BattleFlowchart";
         }
+        else
+        {
+            flowchartName = "Flowchart";
+        }
+
+        GameObject flowchartObject = GameObject.Find(flowchartName);
+        flowchart = flowchartObject.GetComponent<Flowchart>();
 
         onInteract.AddListener(InvokeBlock);
     }

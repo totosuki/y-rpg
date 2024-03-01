@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class InteractionTrigger : MonoBehaviour
 {
-
     [Tooltip("インタラクト可能か")]
     [SerializeField] protected bool interactable;
 
