@@ -3,7 +3,6 @@ using UnityEngine.Events;
 
 public class InteractionTrigger : MonoBehaviour
 {
-
     [Tooltip("インタラクト可能か")]
     [SerializeField] protected bool interactable;
 
@@ -11,7 +10,7 @@ public class InteractionTrigger : MonoBehaviour
     [SerializeField] protected bool fireOnCollision;
 
     // インタラクト時に発動されるイベント
-    [HideInInspector] public UnityEvent onInteract = new UnityEvent();
+    public UnityEvent onInteract = new UnityEvent();
 
     // 当たり判定内にいるかどうかの状態保持
     private bool inCollision;

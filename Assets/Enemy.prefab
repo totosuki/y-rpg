@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7181338490300540144}
   - component: {fileID: 7181338490300540145}
-  - component: {fileID: 6853998375347061553}
+  - component: {fileID: 5830079128276909696}
   - component: {fileID: 4138947187964153690}
   - component: {fileID: 8258545794131681765}
   - component: {fileID: 2154861415132937845}
@@ -68,7 +68,7 @@ MonoBehaviour:
     Recieved\u3092\u8A2D\u5B9A\n4. +\u30DC\u30BF\u30F3\u3067\u4F1A\u8A71\u3092\u8FFD\u52A0\n\nNPC\u3092\u6B69\u304B\u305B\u308B\uFF1A\n1.
     NPCAnimController\u30FBAnimator\u3092\u6709\u52B9\u5316\n2. \u30A2\u30CB\u30E1\u30FC\u30B7\u30E7\u30F3\u3092\u4F5C\u6210\u2192Animator\u306B\u7D10\u4ED8\u3051\n3.
     \u30B9\u30AF\u30EA\u30D7\u30C8\u304B\u3089Walk(string \u65B9\u5411, int \u79D2);\u3067\u79FB\u52D5"
---- !u!114 &6853998375347061553
+--- !u!114 &5830079128276909696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,26 +77,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7181338490300540158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c06e511b8104d40359d8c0fc2c1c78e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 43dfaf4207fbe4a808e9923a6756bfa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
   fireOnCollision: 0
   onInteract:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
-        m_MethodName: StartTalk
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  isEnemy: 1
+  message: enconter
 --- !u!114 &4138947187964153690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,9 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9428a5b1c0f41019e36f9687c1982e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionTrigger: {fileID: 6853998375347061553}
-  messageTrigger: {fileID: 0}
-  flowchart: {fileID: 0}
+  messageTrigger: {fileID: 5830079128276909696}
 --- !u!114 &8258545794131681765
 MonoBehaviour:
   m_ObjectHideFlags: 0
