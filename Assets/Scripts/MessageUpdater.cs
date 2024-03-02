@@ -48,14 +48,10 @@ public class MessageUpdater : MonoBehaviour
         if (message != null)
         {
             messageTrigger.message = message;
-            // インタラクト可能にする
-            messageTrigger.SetInteractable(true);
         }
         else
         {
             messageTrigger.message = "";
-            // 返せるメッセージが無いのでインタラクト不可にする
-            messageTrigger.SetInteractable(false);
         }
     }
 

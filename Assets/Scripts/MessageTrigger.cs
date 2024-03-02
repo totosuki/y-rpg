@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fungus;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MessageTrigger : InteractionTrigger
@@ -37,6 +38,12 @@ public class MessageTrigger : InteractionTrigger
         flowchart = flowchartObject.GetComponent<Flowchart>();
 
         onInteract.AddListener(InvokeBlock);
+    }
+
+    public override bool CanInteract()
+    {
+        // メッセージが空で無いことを条件に加える
+        return base.CanInteract() && message != "";
     }
 
     // Fungusのブロックを実行する

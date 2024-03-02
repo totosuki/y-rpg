@@ -24,7 +24,7 @@ public class InteractionTrigger : MonoBehaviour
         {
             return;
         }
-        if (interactable && inCollision)
+        if (CanInteract())
         {
             // クリックでイベントを発動
             // fireOnCollision == trueの時、自動的に発動
@@ -39,6 +39,12 @@ public class InteractionTrigger : MonoBehaviour
                 }
             }
         }
+    }
+
+    // インタラクト可能かどうか
+    public virtual bool CanInteract()
+    {
+        return interactable && inCollision;
     }
 
     // 当たり判定
@@ -60,12 +66,6 @@ public class InteractionTrigger : MonoBehaviour
                 interacted = false;
             }
         }
-    }
-    
-    // インタラクト可能かどうか
-    public bool CanInteract()
-    {
-        return interactable && inCollision;
     }
 
     public void SetInteractable(bool flag)
