@@ -4740,6 +4740,7 @@ GameObject:
   - component: {fileID: 600660998}
   - component: {fileID: 600660999}
   - component: {fileID: 600661000}
+  - component: {fileID: 600661001}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -4772,7 +4773,7 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600660920}
+  - {fileID: 600660846}
   selectedCommands: []
   variables:
   - {fileID: 600660602}
@@ -8149,6 +8150,7 @@ MonoBehaviour:
   - {fileID: 600660907}
   - {fileID: 600660946}
   - {fileID: 600660909}
+  - {fileID: 600661001}
   suppressAllAutoSelections: 0
 --- !u!114 &600660907
 MonoBehaviour:
@@ -8198,7 +8200,7 @@ MonoBehaviour:
   logType: 0
   logMessage:
     stringRef: {fileID: 0}
-    stringVal: Load
+    stringVal: Loaded
 --- !u!114 &600660910
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -10198,6 +10200,24 @@ MonoBehaviour:
   customDescription: 
   fireEvent: 0
   resumeOnLoad: 1
+--- !u!114 &600661001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fab8abf0343545abbfebd9a7b7b34bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 403
+  indentLevel: 1
+  logType: 0
+  logMessage:
+    stringRef: {fileID: 0}
+    stringVal: -- Turn {$turn} --
 --- !u!1 &621899231
 GameObject:
   m_ObjectHideFlags: 0
@@ -13901,7 +13921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1d8f8674dc04bee819022449b6f97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 6
+  MoveSpeed: 12
   canMove: 0
   animator: {fileID: 1139731381}
 --- !u!50 &1139731385
@@ -14884,7 +14904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690936031038579364, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
       propertyPath: message
-      value: enterSRoom
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1690936031038579364, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
       propertyPath: flowchart
@@ -14896,7 +14916,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
+      propertyPath: messageList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
+      propertyPath: messageList.Array.data[0].turn
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
+      propertyPath: messageList.Array.data[1].turn
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
+      propertyPath: messageList.Array.data[0].message
+      value: enterSRoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124982104124291230, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
+      propertyPath: messageList.Array.data[1].message
+      value: enterSRoom
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
@@ -53730,7 +53770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1690936031038579364, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
@@ -68760,6 +68800,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5830079128276909696, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
+      propertyPath: isEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830079128276909696, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6037083435386658385, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -68862,6 +68910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7181338490300540146, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
+    - {fileID: 6853998375347061553, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
 --- !u!1 &2111088145
 GameObject:

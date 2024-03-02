@@ -8,32 +8,40 @@ public class AreaManager : MonoBehaviour
 {
     public AreaInfo areaInfo;
 
-    public GameManager gameManager;
+    // 多分今の仕様的に記憶はできないから遺産
 
-    [Tooltip("一定時間は同じエリア移動を再通知しない")]
-    [SerializeField]private int rememberTime;
+    // public GameManager gameManager;
 
-    private List<string> rememberList = new List<string>();
+    // [Tooltip("一定時間は同じエリア移動を再通知しない")]
+    // [SerializeField]private int rememberTime;
 
-    public void RememberArea(string areaName)
-    {
-        // 数秒間記憶する
-        rememberList.Add(areaName);
-        StartCoroutine(RemoveAreaFromRememberList(areaName));
-    }
+    // private List<string> rememberList = new List<string>();
 
-    IEnumerator RemoveAreaFromRememberList(string areaName)
-    {
-        yield return new WaitForSeconds(rememberTime);
-        rememberList.Remove(areaName);
-    }
+    // public void RememberArea(string areaName)
+    // {
+    //     // 数秒間記憶する
+    //     rememberList.Add(areaName);
+    //     StartCoroutine(RemoveAreaFromRememberList(areaName));
+    // }
+
+    // IEnumerator RemoveAreaFromRememberList(string areaName)
+    // {
+    //     yield return new WaitForSeconds(rememberTime);
+    //     rememberList.Remove(areaName);
+    // }
+
+    // public void ShowAreaInfo(string areaName, string subtitle)
+    // {
+    //     if (!rememberList.Contains(areaName))
+    //     {
+    //         areaInfo.SetInfo(areaName, subtitle);
+    //         areaInfo.Show();
+    //     }
+    // }
 
     public void ShowAreaInfo(string areaName, string subtitle)
     {
-        if (!rememberList.Contains(areaName))
-        {
-            areaInfo.SetInfo(areaName, subtitle);
-            areaInfo.Show();
-        }
+        areaInfo.SetInfo(areaName, subtitle);
+        areaInfo.Show();
     }
 }
