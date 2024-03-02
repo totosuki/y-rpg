@@ -4,12 +4,11 @@ using Fungus;
 public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
 
-    [SerializeField] private InteractionTrigger interactionTrigger;
     [SerializeField] private MessageTrigger messageTrigger;
 
     private GameObject player;
 
-    public Flowchart flowchart;
+    private Flowchart flowchart;
 
     private EntityStatus enemyEntityStatus;
 
@@ -19,12 +18,16 @@ public class EnemyController : MonoBehaviour {
 
     void Start() {
         player = GameObject.Find("Player");
+
+        GameObject flowchartObject = GameObject.Find("BattleFlowchart");
+        flowchart = flowchartObject.GetComponent<Flowchart>();
+
         animController = GetComponent<NPCAnimController>();
         enemyEntityStatus = GetComponent<EntityStatus>();
     }
 
     void Update() {
-        if (interactionTrigger.CanInteract()) {
+        if (messageTrigger.CanInteract()) {
             // プレイヤーを認識したら追跡開始
             int playerFacing = GetPlayerFacing();
 
