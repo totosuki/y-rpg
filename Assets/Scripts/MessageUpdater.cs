@@ -43,7 +43,20 @@ public class MessageUpdater : MonoBehaviour
     public void UpdateMessage()
     {
         int turn = gameManager.GetCurrentTurn();
-        messageTrigger.message = GetMessageByTurn(turn);
+        string message = GetMessageByTurn(turn);
+
+        if (message != null)
+        {
+            messageTrigger.message = message;
+            // インタラクト可能にする
+            messageTrigger.SetInteractable(true);
+        }
+        else
+        {
+            messageTrigger.message = "";
+            // 返せるメッセージが無いのでインタラクト不可にする
+            messageTrigger.SetInteractable(false);
+        }
     }
 
     public string GetMessageByTurn(int turn)
@@ -54,13 +67,11 @@ public class MessageUpdater : MonoBehaviour
         if (messageListDictonary.ContainsKey(turn))
         {
             message = messageListDictonary[turn];
-            messageTrigger.SetInteractable(true);
         }
         else
         {
-            // 対応するメッセージが存在しない場合はインタラクト不可に
-            message = "";
-            messageTrigger.SetInteractable(false);
+            // 対応するメッセージが存在しない場合はnullを返す
+            message = null;
         }
 
         return message;
