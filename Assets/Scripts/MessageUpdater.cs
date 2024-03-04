@@ -21,11 +21,11 @@ public class MessageUpdater : MonoBehaviour
         public TValue Value => message;
     }
 
-    [SerializeField] private SerializableKeyPair<int,string>[] messageList = default;
+    [SerializeField] private SerializableKeyPair<string,string>[] messageList = default;
 
     // インスペクターのターン別メッセージリストをDictonaryに変換
-    private Dictionary<int, string> _messageListDictionary;
-    private Dictionary<int, string> messageListDictonary => _messageListDictionary ??= messageList.ToDictionary(p => p.Key, p => p.Value);
+    private Dictionary<string, string> _messageListDictionary;
+    private Dictionary<string, string> messageListDictonary => _messageListDictionary ??= messageList.ToDictionary(p => p.Key, p => p.Value);
 
 
     private GameManager gameManager;
@@ -60,9 +60,9 @@ public class MessageUpdater : MonoBehaviour
         string message;
 
         // ターンに対応したメッセージを返す
-        if (messageListDictonary.ContainsKey(turn))
+        if (messageListDictonary.ContainsKey(turn.ToString()))
         {
-            message = messageListDictonary[turn];
+            message = messageListDictonary[turn.ToString()];
         }
         else
         {
