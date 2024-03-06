@@ -60,6 +60,14 @@ public class ItemManager : MonoBehaviour
         return items[id];
     }
 
+    private void LoadItemStatus() 
+    {
+        for (int i = 0; i < numberOfItems; i++) 
+        {
+            if (collectItemList[i]) items[i].Disable();
+        }
+    }
+
     void Awake() 
     {
         LoadCollectItemBit();
@@ -67,6 +75,8 @@ public class ItemManager : MonoBehaviour
         InitCollectItem(); // デバッグで初期化したいときはコメントアウトを外す
 
         InitItems();
+
+        LoadItemStatus();
     }
 
     void OnApplicationQuit() 
