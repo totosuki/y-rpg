@@ -13,6 +13,15 @@ public class ItemManager : MonoBehaviour
     private List<Item> items; // Itemクラスのリストを作成
 
 
+    public void LoadCollectItemBit()
+    {
+        collectItemBit = PlayerPrefs.GetInt("CollectItemBit", 0);
+        for (int i = 0; i < numberOfItems; i++) 
+        {
+            collectItemList[i] = (collectItemBit & (1 << i)) != 0;
+        }
+    }
+
     public void AddCollectItemBit(int itemId) 
     {
         // 0b1000 | 0b0100 = 0b1100 となる
@@ -55,11 +64,7 @@ public class ItemManager : MonoBehaviour
 
     void Awake() 
     {
-        collectItemBit = PlayerPrefs.GetInt("CollectItemBit", 0);
-        for (int i = 0; i < numberOfItems; i++) 
-        {
-            collectItemList.Add((collectItemBit & (1 << i)) != 0);
-        }
+        LoadCollectItemBit();
 
         InitCollectItem(); // デバッグで初期化したいときはコメントアウトを外す
 
