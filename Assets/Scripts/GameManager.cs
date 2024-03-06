@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Flowchart flowchart;
-    [SerializeField] private int turn;
+    [Header("現在のターン")] public static int turn;
 
     public UnityEvent onTurnUpdate = new UnityEvent();
 
