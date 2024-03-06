@@ -45,11 +45,16 @@ public class Item : MonoBehaviour
         }
     }
 
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player") {
             CollectItem();
-            gameObject.SetActive(false);
+            Disable();
         }
     }
 }
