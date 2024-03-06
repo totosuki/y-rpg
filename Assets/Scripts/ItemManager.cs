@@ -18,7 +18,7 @@ public class ItemManager : MonoBehaviour
         collectItemBit = PlayerPrefs.GetInt("CollectItemBit", 0);
         for (int i = 0; i < numberOfItems; i++) 
         {
-            collectItemList[i] = (collectItemBit & (1 << i)) != 0;
+            collectItemList.Add((collectItemBit & (1 << i)) != 0);
         }
     }
 
