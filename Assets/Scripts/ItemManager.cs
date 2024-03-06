@@ -32,7 +32,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    private List<Item> initItems() 
+    private List<Item> InitItems() 
     {
         List<Item> items = new List<Item>();
         for (int i = 0; i < numberOfItems; i++) 
@@ -63,7 +63,7 @@ public class ItemManager : MonoBehaviour
 
         InitCollectItem(); // デバッグで初期化したいときはコメントアウトを外す
 
-        items = initItems();
+        items = InitItems();
     }
 
     void OnApplicationQuit() 
