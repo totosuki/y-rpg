@@ -6,15 +6,20 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Flowchart flowchart;
-    [SerializeField] private int turn;
+
+    [Header("現在のターン")]
+    public int turn;
 
     public UnityEvent onTurnUpdate = new UnityEvent();
 
     private GameObject player;
 
+    private MissionManager missionManager;
+
     void Start()
     {
         player = GameObject.Find("Player");
+        missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
     }
 
     public int GetCurrentTurn()
@@ -56,5 +61,12 @@ public class GameManager : MonoBehaviour
     public void InvokeOnTurnUpdate()
     {
         onTurnUpdate.Invoke();
+        TellTurnUpdate(); // ここでターン更新を通知
+    }
+
+    // ターン更新を通知する処理
+    private void TellTurnUpdate()
+    {
+        missionManager.ListenTurnUpdate();
     }
 }
