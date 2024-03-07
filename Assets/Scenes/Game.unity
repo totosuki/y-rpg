@@ -4223,6 +4223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 452932864}
   - component: {fileID: 452932865}
+  - component: {fileID: 452932866}
   m_Layer: 5
   m_Name: MissionView
   m_TagString: Untagged
@@ -4276,6 +4277,18 @@ MonoBehaviour:
   - turn: 7
     title: "\u68EE\u3078\u884C\u3053\u3046"
     description: "1\u968E\u306E\u5317\u897F\u306B\u3042\u308B\u3088\u3046\u3060\u3002"
+--- !u!225 &452932866
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452932863}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &469971423
 GameObject:
   m_ObjectHideFlags: 0
