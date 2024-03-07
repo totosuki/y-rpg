@@ -28,6 +28,8 @@ public class MissionManager : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         canvasGroup = GetComponent<CanvasGroup>();
+
+        gameManager.onTurnUpdate.AddListener(ListenTurnUpdate);
     }
 
     public void ShowMission(int turn)
@@ -57,7 +59,7 @@ public class MissionManager : MonoBehaviour
     // ターン更新に反応する処理
     public void ListenTurnUpdate()
     {
-        int turn = gameManager.turn;
+        int turn = gameManager.GetCurrentTurn();
         ShowMission(turn);
     }
 
