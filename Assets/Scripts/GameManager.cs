@@ -14,12 +14,9 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
-    private MissionManager missionManager;
-
     void Start()
     {
         player = GameObject.Find("Player");
-        missionManager = GameObject.Find("MissionView").GetComponent<MissionManager>();
     }
 
     public int GetCurrentTurn()
@@ -61,12 +58,5 @@ public class GameManager : MonoBehaviour
     public void InvokeOnTurnUpdate()
     {
         onTurnUpdate.Invoke();
-        TellTurnUpdate(); // ここでターン更新を通知
-    }
-
-    // ターン更新を通知する処理
-    private void TellTurnUpdate()
-    {
-        missionManager.ListenTurnUpdate();
     }
 }
