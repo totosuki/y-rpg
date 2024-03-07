@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class Fader : MonoBehaviour {
+public class Fader : MonoBehaviour
+{
     public float waitDuration;
     public float speed;
 
@@ -15,17 +18,22 @@ public class Fader : MonoBehaviour {
     public AnimationCurve curve;
 
     // Update is called once per frame
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
         if (startFade) {
             t += speed * 0.005f;
-            if (t >= 1f) {
+
+            if (t >= 1f)
+            {
                 startFade = false;
             }
+
             ChangeColorOfGameObject(gameObject, Color.Lerp(startColor,endColor,curve.Evaluate(t)));
         }
     }
 
-    public void InvokeFade() {
+    public void InvokeFade()
+    {
         Invoke("StartFade", waitDuration);
     }
 
@@ -33,7 +41,8 @@ public class Fader : MonoBehaviour {
         startFade = true;
     }
 
-    private void ChangeColorOfGameObject(GameObject targetObject, Color color) {
+    private void ChangeColorOfGameObject(GameObject targetObject, Color color)
+    {
     //入力されたオブジェクトのRendererを全て取得し、さらにそのRendererに設定されている全Materialの色を変える
         targetObject.GetComponent<Image>().color = color;
     }
