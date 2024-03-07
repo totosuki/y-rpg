@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using Fungus;
 
-public class SettingMenu : MonoBehaviour {
+public class SettingMenu : MonoBehaviour
+{
     public GameObject settingPanel;
     public Slider volumeSlider;
 
@@ -13,28 +14,34 @@ public class SettingMenu : MonoBehaviour {
 
     private MusicManager musicManager;
 
-    void Start() {
+
+    void Start()
+    {
         musicManager = FungusManager.Instance.MusicManager;
 
         CloseSettingMenu();
     }
 
-    public void OpenSettingMenu() {
+    public void OpenSettingMenu()
+    {
         player.DisableCanMove();
         settingPanel.SetActive(true);
     }
 
-    public void CloseSettingMenu() {
+    public void CloseSettingMenu()
+    {
         player.EnableCanMove();
         settingPanel.SetActive(false);
     }
 
-    public void OnVolumeChanged() {
+    public void OnVolumeChanged()
+    {
         SetVolume(volumeSlider.value);
     }
 
     // 音量を設定
-    void SetVolume(float volume) {
+    void SetVolume(float volume)
+    {
         musicManager.SetAudioVolume(volume, 0, () => {});
 
         story.volume = volume;

@@ -1,59 +1,62 @@
-using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using Fungus;
+using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{   
     private NPCAnimController animController;
-
-    [SerializeField] private MessageTrigger messageTrigger;
+    private NPCController controller;
 
     private GameObject player;
-
-    private Flowchart flowchart;
-
-    private EntityStatus enemyEntityStatus;
 
     private bool chaseFlag = true;
     private bool collided = false;
     private int playerFacingMemory;
 
-    void Start() {
+    void Start()
+    {
         player = GameObject.Find("Player");
-
-        GameObject flowchartObject = GameObject.Find("BattleFlowchart");
-        flowchart = flowchartObject.GetComponent<Flowchart>();
-
         animController = GetComponent<NPCAnimController>();
-        enemyEntityStatus = GetComponent<EntityStatus>();
+        controller = GetComponent<NPCController>();
     }
 
-    void Update() {
-        if (messageTrigger.CanInteract()) {
-            // プレイヤーを認識したら追跡開始
+    void Update()
+    {
+        if (controller.canActivate)
+        {
             int playerFacing = GetPlayerFacing();
 
             // playerFacingの値が変わった時に実行
-            if (playerFacing != playerFacingMemory) {
+            if (playerFacing != playerFacingMemory)
+            {
                 playerFacingMemory = playerFacing;
                 animController.SetFacing(playerFacing);
             }
             // 1回だけ実行
-            if (chaseFlag){
+            if (chaseFlag)
+            {
                 animController.StartWalk(playerFacing);
+
                 chaseFlag = false;
             }
         }
-        else {
+        else
+        {
             // 1回だけ実行
-            if (!chaseFlag){
+            if (!chaseFlag)
+            {
                 animController.StopWalk();
                 chaseFlag = true;
             }
         }
     }
 
-    int GetPlayerFacing() {
+    int GetPlayerFacing()
+    {
         // 2点間の角度を取得(deg -180 ~ 180)
-        int GetAngle(Vector2 start, Vector2 target) {
+        int GetAngle(Vector2 start, Vector2 target)
+        {
             // 2点間の差分を取得
             Vector2 dt = target - start;
             // rad = arctan y/x
@@ -65,17 +68,22 @@ public class EnemyController : MonoBehaviour {
         }
 
         // 角度から上下左右に絞る
-        int GetFacingFromAngle(int angle) {
-            if (-135 < angle && angle <= -45) {
+        int GetFacingFromAngle(int angle)
+        {
+            if (-135 < angle && angle <= -45)
+            {
                 return 0;
             }
-            else if (-45 < angle && angle <= 45) {
+            else if (-45 < angle && angle <= 45)
+            {
                 return 2;
             }
-            else if (45 < angle && angle <= 135) {
+            else if (45 < angle && angle <= 135)
+            {
                 return 3;
             }
-            else {
+            else
+            {
                 return 1;
             }
         }
@@ -90,45 +98,41 @@ public class EnemyController : MonoBehaviour {
 
     // 当たり判定
     // 2重の当たり判定を切り分けて処理することに注意
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter2D(Collider2D other)
+    {
         // プレイヤー以外は無視
         if (other.gameObject.tag != "Player") return;
 
-        if (collided) {
+        if (collided)
+        {
             collided = false;
-            Encountered();
+            StartBattle();
         }
-        else {
+        else
+        {
             collided = true;
             return;
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit2D(Collider2D other)
+    {
         // プレイヤー以外は無視
         if (other.gameObject.tag != "Player") return;
 
         collided = false;
     }
 
-    void StartBattle() {
+    void StartBattle()
+    {
         Debug.Log("battle!");
         animController.StopWalk();
         // ここの場合はバトル開始
-        messageTrigger.InvokeBlock();
+        controller.StartTalk();
     }
 
-    void Encountered()
+    public void Hide()
     {
-        SetSelfAsEnemy();
-        StartBattle();
-    }
-
-    void SetSelfAsEnemy()
-    {
-        // FungusのVariablesに自身をenemyとして登録
-        flowchart.SetGameObjectVariable("enemy", gameObject);
-        flowchart.SetStringVariable("enemy_name", enemyEntityStatus._name);
-        flowchart.SetIntegerVariable("enemy_lv", enemyEntityStatus.lv);
+        gameObject.SetActive(false);
     }
 }
