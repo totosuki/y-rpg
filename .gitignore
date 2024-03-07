@@ -64,3 +64,7 @@ crashlytics-build.properties
 .vscode
 .vs
 .vsconfig
+.gitconfig
+
+# Too large files
+Assets/Fonts/
