@@ -1,8 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class XPBar : MonoBehaviour
-{
+public class XPBar : MonoBehaviour {
     public int level;
     public int currentXp;
     public int maxXp;
@@ -10,14 +9,12 @@ public class XPBar : MonoBehaviour
     private SliderManager sliderManager;
     private TMP_Text lvText;
 
-    void Start()
-    {
+    void Start() {
         sliderManager = GetComponentInChildren<SliderManager>();
         lvText = GetComponentInChildren<TMP_Text>();
     }
 
-    void Update()
-    {
+    void Update() {
         // レベルの表示を更新
         lvText.text = $"Lv.{level}";
 
