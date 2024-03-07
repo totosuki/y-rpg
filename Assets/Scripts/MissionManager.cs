@@ -68,7 +68,6 @@ public class MissionManager : MonoBehaviour
 
         while (t < 1f)
         {
-            print(t);
             t += 0.005f;
             canvasGroup.alpha = t;
             transform.localPosition += new Vector3(t/25, 0);
