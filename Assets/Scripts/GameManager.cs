@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        missionManager = GameObject.Find("MissionManager").GetComponent<MissionManager>();
+        missionManager = GameObject.Find("MissionView").GetComponent<MissionManager>();
     }
 
     public int GetCurrentTurn()
