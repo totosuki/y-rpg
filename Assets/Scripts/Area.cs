@@ -15,6 +15,7 @@ public class Area : MonoBehaviour
     
     public void ShowAreaInfo()
     {
+        print("show");
         areaManager.ShowAreaInfo(areaName, subtitle);
     }
 }
