@@ -1,13 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Fungus;
-using System.Collections;
-using System;
 
 /// <summary>
 /// InputField・GetInputコマンドなどの補助を行う
 /// </summary>
-public class InputManager : MonoBehaviour {
+public class InputManager : MonoBehaviour
+{
     // fungus
     [SerializeField]
     private Flowchart flowchart;
@@ -16,11 +17,11 @@ public class InputManager : MonoBehaviour {
     private TMP_InputField _inputField;
     private TMP_Text placeholder;
 
-    private string variableKey;
+    private string varKey;
+    private string message;
 
-    private bool isInputFinished;
-
-    void Start() {
+    void Start()
+    {
         input = gameObject;
         _inputField = input.GetComponent<TMP_InputField>();
         placeholder = _inputField.GetComponentInChildren<TMP_Text>();
@@ -29,37 +30,44 @@ public class InputManager : MonoBehaviour {
         input.SetActive(false);
     }
 
-    void InitInput() {
+    void InitInput()
+    {
         _inputField.text = "";
     }
 
-    public IEnumerator StartInput(Action callback) {
-        // 入力を開始
+    public void StartInput()
+    {
         InitInput();
+        // 表示
         input.SetActive(true);
-
-        // 入力が終わったらコールバック
-        yield return new WaitUntil(() => isInputFinished);
-        callback();
     }
 
-    public void EndInput() {
-        // Inputを非表示
+    public void EndInput()
+    {   
+        // 非表示
         input.SetActive(false);
         
-        if (variableKey != null) {
-            string value = _inputField.text;
-            flowchart.SetStringVariable(variableKey, value);
-        }
-        
-        isInputFinished = true;
+        if (varKey == null) return;
+
+        string value = _inputField.text;
+        flowchart.SetStringVariable(varKey, value);
+
+        // メッセージで終了を通知
+        flowchart.SendFungusMessage(message);
     }
 
-    public void SetPlaceholder(string text) {
+    public void SetPlaceholder(string text)
+    {
         placeholder.text = text;
     }
 
-    public void SetVariableKey(string key) {
-        variableKey = key;
+    public void SetVarKey(string key)
+    {
+        varKey = key;
+    }
+
+    public void SetMessage(string msg)
+    {
+        message = msg;
     }
 }
