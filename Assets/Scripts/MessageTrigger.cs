@@ -105,4 +105,9 @@ public class MessageTrigger : InteractionTrigger
     {
         dontstop = true;
     }
+
+    public void SetFireOnCollision(bool flag)
+    {
+        fireOnCollision = flag;
+    }
 }
