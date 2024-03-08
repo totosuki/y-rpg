@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6964823280493614638}
   - component: {fileID: 6964823280493614637}
   - component: {fileID: 7442602614868599929}
+  - component: {fileID: 95539675283437128}
   - component: {fileID: 6429774796278550237}
   m_Layer: 0
   m_Name: item
@@ -103,6 +104,37 @@ MonoBehaviour:
   itemId: 0
   itemName: 
   description: 
+--- !u!114 &95539675283437128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6964823280493614639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43dfaf4207fbe4a808e9923a6756bfa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  fireOnCollision: 0
+  onInteract:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7442602614868599929}
+        m_TargetAssemblyTypeName: Item, Assembly-CSharp
+        m_MethodName: CollectItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  isEnemy: 0
+  message: default
 --- !u!58 &6429774796278550237
 CircleCollider2D:
   m_ObjectHideFlags: 0

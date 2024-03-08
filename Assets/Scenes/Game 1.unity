@@ -5873,9 +5873,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600661058}
-  selectedCommands:
-  - {fileID: 600661110}
+  - {fileID: 600660566}
+  selectedCommands: []
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -8932,7 +8931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: -37.55276
+    x: -38.817783
     y: -2.6568146
     width: 67.07778
     height: 40
@@ -14195,6 +14194,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894130925}
     m_Modifications:
+    - target: {fileID: 1945229415397734243, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6964823280493614638, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -54103,6 +54106,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894130925}
     m_Modifications:
+    - target: {fileID: 95539675283437128, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: message
+      value: fish
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945229415397734243, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6964823280493614638, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -61655,6 +61666,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894130925}
     m_Modifications:
+    - target: {fileID: 95539675283437128, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: fireOnCollision
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6964823280493614638, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
       propertyPath: m_RootOrder
       value: 0

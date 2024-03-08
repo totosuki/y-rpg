@@ -31,7 +31,7 @@ public class Item : MonoBehaviour
         Debug.Log("[ItemScript] コインを取った");
     }
 
-    public void CollectItem() 
+    public void CollectItem()
     {
         switch (itemType) {
             case ItemType.Item:
@@ -43,18 +43,12 @@ public class Item : MonoBehaviour
             default:
                 break;
         }
+
+        Disable();
     }
 
     public void Disable()
     {
         gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player") {
-            CollectItem();
-            Disable();
-        }
     }
 }
