@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
-  fireOnCollision: 0
+  fireOnCollision: 1
   onInteract:
     m_PersistentCalls:
       m_Calls:
