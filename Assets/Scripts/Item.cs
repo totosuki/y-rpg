@@ -21,6 +21,14 @@ public class Item : MonoBehaviour
     [TextArea(3, 10)]
     public string description;
 
+    private SpriteRenderer spriteRenderer;
+    private MessageTrigger messageTrigger;
+
+    void Start() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        messageTrigger = GetComponent<MessageTrigger>();
+    }
+
     private void ItemTriggerEnter() 
     {
         itemManager.AddCollectItemBit(itemId);
@@ -49,6 +57,7 @@ public class Item : MonoBehaviour
 
     public void Disable()
     {
-        gameObject.SetActive(false);
+        spriteRenderer.enabled = false;
+        messageTrigger.SetInteractable(false);
     }
 }
