@@ -70,9 +70,6 @@ public class InteractionTrigger : MonoBehaviour
 
     public void SetInteractable(bool flag)
     {
-        if (!fireOnCollision)
-        {
-            interactable = flag;
-        }
+        interactable = flag;
     }
 }
