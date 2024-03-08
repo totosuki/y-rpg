@@ -68,3 +68,5 @@ crashlytics-build.properties
 
 # Too large files
 Assets/Fonts/
+
+UserSettings/
