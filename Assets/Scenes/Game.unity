@@ -425,6 +425,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 3753819723432344219, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753819723432344219, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: messageList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2886,7 +2890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 174.99994, y: -29.999998}
+  m_AnchoredPosition: {x: 174.99991, y: -29.999998}
   m_SizeDelta: {x: 350, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245910594
@@ -4485,6 +4489,10 @@ PrefabInstance:
       value: Pachi
       objectReference: {fileID: 0}
     - target: {fileID: 3753819723432344219, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3753819723432344219, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: messageList.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -5324,7 +5332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -174.99994, y: 143}
+  m_AnchoredPosition: {x: -174.99991, y: 143}
   m_SizeDelta: {x: 350, y: 7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &514861146
@@ -14576,7 +14584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000117324205}
+  m_AnchoredPosition: {x: 0, y: 0.00010290315}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &621899233
@@ -18050,7 +18058,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 140375396}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.98505515
+  m_Size: 0.99972004
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -82190,6 +82198,14 @@ PrefabInstance:
     - target: {fileID: 2094827918355497747, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: nameText
       value: NATO
+      objectReference: {fileID: 0}
+    - target: {fileID: 2094827918355497747, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
+      propertyPath: description
+      value: "NPC\u306E\u4F5C\u6210\u624B\u9806\uFF1A\n1. NameText \u30FB\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u540D\u3092\u597D\u304D\u306A\u540D\u524D\u306B\u5909\u66F4\n2.
+        SpriteRenderer\u306ESprite\u306B\u898B\u305F\u76EE\u306E\u30D5\u30A1\u30A4\u30EB\u3092\u7A81\u3063\u8FBC\u3080\n\nNPC\u306B\u4F1A\u8A71\u3092\u5C0E\u5165\uFF1A\n1.
+        MessageTrigger\u306EMessage\u306B\u4EFB\u610F\u306E\u6587\u5B57\u5217\u3092\u5165\u308C\u308B\n2.
+        FlowchartWindow\u304B\u3089\u30D6\u30ED\u30C3\u30AF\u3092\u8FFD\u52A0\n3.
+        ExecuteOnEvent\u306BMessage Recieved\u3092\u8A2D\u5B9A\n4. +\u30DC\u30BF\u30F3\u3067\u4F1A\u8A71\u3092\u8FFD\u52A0"
       objectReference: {fileID: 0}
     - target: {fileID: 2094827918355497756, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
       propertyPath: m_Name
