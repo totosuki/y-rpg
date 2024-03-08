@@ -4755,7 +4755,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 530461694}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -55110,6 +55110,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1894130925}
     m_Modifications:
+    - target: {fileID: 95539675283437128, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: message
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 95539675283437128, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
+      propertyPath: fireOnCollision
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6964823280493614638, guid: d56ab723fdc0349c88a5fb5f66d664df, type: 3}
       propertyPath: m_RootOrder
       value: 2
