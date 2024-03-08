@@ -40,12 +40,6 @@ public class MessageTrigger : InteractionTrigger
         onInteract.AddListener(InvokeBlock);
     }
 
-    public override bool CanInteract()
-    {
-        // メッセージが空で無いことを条件に加える
-        return base.CanInteract() && message != "";
-    }
-
     // Fungusのブロックを実行する
     IEnumerator SendMessage(Action callback)
     {
@@ -91,6 +85,11 @@ public class MessageTrigger : InteractionTrigger
 
     public void InvokeBlock()
     {
+        if (message == "")
+        {
+            return;
+        }
+
         playerController.DisableCanMove();
 
         StartCoroutine(SendMessage(() => {
@@ -104,5 +103,10 @@ public class MessageTrigger : InteractionTrigger
     public void DontStopTalkOnce()
     {
         dontstop = true;
+    }
+
+    public void SetFireOnCollision(bool flag)
+    {
+        fireOnCollision = flag;
     }
 }
