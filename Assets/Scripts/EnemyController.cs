@@ -124,7 +124,7 @@ public class EnemyController : MonoBehaviour {
         StartBattle();
     }
 
-    void SetSelfAsEnemy()
+    public void SetSelfAsEnemy()
     {
         // FungusのVariablesに自身をenemyとして登録
         flowchart.SetGameObjectVariable("enemy", gameObject);

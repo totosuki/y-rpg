@@ -42,7 +42,7 @@ public class InteractionTrigger : MonoBehaviour
     }
 
     // インタラクト可能かどうか
-    public virtual bool CanInteract()
+    public bool CanInteract()
     {
         return interactable && inCollision;
     }
