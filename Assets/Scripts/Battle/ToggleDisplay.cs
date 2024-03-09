@@ -12,4 +12,9 @@ public class ToggleDisplay : MonoBehaviour {
     private void Toggle() {
         gameObject.SetActive(display);
     }
+
+    public void Init()
+    {
+        gameObject.SetActive(false);
+    }
 }

@@ -14,6 +14,13 @@ public class Fader : MonoBehaviour {
     public float t;
     public AnimationCurve curve;
 
+    private Image image;
+
+    void Start()
+    {
+        image = GetComponent<Image>();
+    }
+
     // Update is called once per frame
     void FixedUpdate() {
         if (startFade) {
@@ -21,7 +28,7 @@ public class Fader : MonoBehaviour {
             if (t >= 1f) {
                 startFade = false;
             }
-            ChangeColorOfGameObject(gameObject, Color.Lerp(startColor,endColor,curve.Evaluate(t)));
+            ChangeColorOfGameObject(Color.Lerp(startColor,endColor,curve.Evaluate(t)));
         }
     }
 
@@ -33,8 +40,14 @@ public class Fader : MonoBehaviour {
         startFade = true;
     }
 
-    private void ChangeColorOfGameObject(GameObject targetObject, Color color) {
-    //入力されたオブジェクトのRendererを全て取得し、さらにそのRendererに設定されている全Materialの色を変える
-        targetObject.GetComponent<Image>().color = color;
+    private void ChangeColorOfGameObject(Color color) {
+        image.color = color;
+    }
+
+    public void Init()
+    {
+        ChangeColorOfGameObject(startColor);
+        startFade = false;
+        t = 0f;
     }
 }
