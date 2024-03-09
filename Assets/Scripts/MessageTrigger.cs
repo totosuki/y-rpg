@@ -12,6 +12,10 @@ public class MessageTrigger : InteractionTrigger
     [ConditionalDisableInInspector(nameof(isEnemy), false, conditionalInvisible: true)]
     public string message;
 
+    // Ememyのみの設定 バトル終了時のコールバック用のメッセージ
+    [ConditionalDisableInInspector(nameof(isEnemy), true, conditionalInvisible: true)]
+    public string onBattleEndMessage;
+
     private Flowchart flowchart;
     private PlayerController playerController;
     private bool dontstop;
@@ -88,6 +92,11 @@ public class MessageTrigger : InteractionTrigger
         if (message == "")
         {
             return;
+        }
+
+        if (isEnemy && onBattleEndMessage != "")
+        {
+            flowchart.SetStringVariable("on_end_message", onBattleEndMessage);
         }
 
         playerController.DisableCanMove();
