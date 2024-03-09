@@ -5,6 +5,9 @@ public class EnemyController : MonoBehaviour {
     private NPCAnimController animController;
 
     [SerializeField] private MessageTrigger messageTrigger;
+    
+    // 追いかけるかどうか
+    [SerializeField] private bool doChase;
 
     private GameObject player;
 
@@ -27,26 +30,30 @@ public class EnemyController : MonoBehaviour {
     }
 
     void Update() {
-        if (messageTrigger.CanInteract()) {
-            // プレイヤーを認識したら追跡開始
-            int playerFacing = GetPlayerFacing();
+        // プレイヤーを追いかける
+        if (doChase)
+        {
+            if (messageTrigger.CanInteract()) {
+                // プレイヤーを認識したら追跡開始
+                int playerFacing = GetPlayerFacing();
 
-            // playerFacingの値が変わった時に実行
-            if (playerFacing != playerFacingMemory) {
-                playerFacingMemory = playerFacing;
-                animController.SetFacing(playerFacing);
+                // playerFacingの値が変わった時に実行
+                if (playerFacing != playerFacingMemory) {
+                    playerFacingMemory = playerFacing;
+                    animController.SetFacing(playerFacing);
+                }
+                // 1回だけ実行
+                if (chaseFlag){
+                    animController.StartWalk(playerFacing);
+                    chaseFlag = false;
+                }
             }
-            // 1回だけ実行
-            if (chaseFlag){
-                animController.StartWalk(playerFacing);
-                chaseFlag = false;
-            }
-        }
-        else {
-            // 1回だけ実行
-            if (!chaseFlag){
-                animController.StopWalk();
-                chaseFlag = true;
+            else {
+                // 1回だけ実行
+                if (!chaseFlag){
+                    animController.StopWalk();
+                    chaseFlag = true;
+                }
             }
         }
     }
@@ -118,13 +125,13 @@ public class EnemyController : MonoBehaviour {
         messageTrigger.InvokeBlock();
     }
 
-    void Encountered()
+    public void Encountered()
     {
         SetSelfAsEnemy();
         StartBattle();
     }
 
-    public void SetSelfAsEnemy()
+    void SetSelfAsEnemy()
     {
         // FungusのVariablesに自身をenemyとして登録
         flowchart.SetGameObjectVariable("enemy", gameObject);
