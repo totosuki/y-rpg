@@ -3149,7 +3149,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  spriteSize: 0
+  spriteSize: 1
 --- !u!114 &257300871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21331,7 +21331,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  spriteSize: 0
+  spriteSize: 1
 --- !u!95 &1027079533 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6037083435386658385, guid: c6c2f5e6b5b2d43e0b0d6a5a0f4c91ac, type: 3}
@@ -31797,7 +31797,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  spriteSize: 0
+  spriteSize: 1
 --- !u!1 &1659266171
 GameObject:
   m_ObjectHideFlags: 0
@@ -60409,7 +60409,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
-  spriteSize: 0
+  spriteSize: 1.5
 --- !u!114 &1737927447
 MonoBehaviour:
   m_ObjectHideFlags: 0
