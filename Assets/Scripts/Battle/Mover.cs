@@ -34,8 +34,8 @@ public class Mover : MonoBehaviour {
         }
     }
 
-    public void InvokeMove() {
-        Invoke("StartMove", waitDuration);
+    public void InvokeMove(float duration) {
+        Invoke("StartMove", duration);
     }
 
     private void StartMove() {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using Fungus;
+using UnityEngine.UI;
 
 public class BattleManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class BattleManager : MonoBehaviour
     // ステータス表示
     [SerializeField] private StatusController playerStatus;
     [SerializeField] private StatusController enemyStatus;
+
+    [SerializeField] private GameObject enemyImageObject;
 
     private EnemySetting enemySetting;
 
@@ -63,6 +66,13 @@ public class BattleManager : MonoBehaviour
         // バトルの設定をEnemyから適用する
         enemySetting = enemy.GetComponent<EnemySetting>();
         SetBattleConfigByEnemySetting(enemySetting);
+
+        // Enemyの見た目を設定する
+        Image enemyImage = enemyImageObject.GetComponent<Image>();
+        enemyImage.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
+        // 画像のサイズを調整する
+        float size = enemySetting.spriteSize;
+        enemyImageObject.transform.localScale = new Vector3(size, size, size);
 
         ToggleBattleModeTo(true);
     }

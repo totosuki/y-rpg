@@ -32,8 +32,8 @@ public class Fader : MonoBehaviour {
         }
     }
 
-    public void InvokeFade() {
-        Invoke("StartFade", waitDuration);
+    public void InvokeFade(float duration) {
+        Invoke("StartFade", duration);
     }
 
     private void StartFade() {

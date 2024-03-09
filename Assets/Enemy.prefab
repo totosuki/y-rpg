@@ -87,6 +87,7 @@ MonoBehaviour:
       m_Calls: []
   isEnemy: 1
   message: enconter
+  onBattleEndMessage: 
 --- !u!114 &4138947187964153690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messageTrigger: {fileID: 5830079128276909696}
+  doChase: 0
 --- !u!114 &8258545794131681765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 0
     m_RotationOrder: 4
+  spriteSize: 1
 --- !u!114 &2916967100820902782
 MonoBehaviour:
   m_ObjectHideFlags: 0
