@@ -5903,6 +5903,10 @@ GameObject:
   - component: {fileID: 600661165}
   - component: {fileID: 600661164}
   - component: {fileID: 600661168}
+  - component: {fileID: 600661172}
+  - component: {fileID: 600661171}
+  - component: {fileID: 600661170}
+  - component: {fileID: 600661169}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -5935,8 +5939,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600661166}
-  selectedCommands: []
+  - {fileID: 600661079}
+  selectedCommands:
+  - {fileID: 600661171}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -13155,6 +13160,7 @@ MonoBehaviour:
   - {fileID: 600661076}
   - {fileID: 600661075}
   - {fileID: 600661074}
+  - {fileID: 600661172}
   - {fileID: 600661073}
   - {fileID: 600661072}
   suppressAllAutoSelections: 0
@@ -13305,6 +13311,7 @@ MonoBehaviour:
   - {fileID: 600661083}
   - {fileID: 600661082}
   - {fileID: 600661078}
+  - {fileID: 600661171}
   - {fileID: 600661081}
   - {fileID: 600661080}
   suppressAllAutoSelections: 0
@@ -13435,7 +13442,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 412.009
-    y: 488.60022
+    y: 490.05795
     width: 96.64723
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -14895,6 +14902,7 @@ MonoBehaviour:
   eventHandler: {fileID: 0}
   commandList:
   - {fileID: 600661147}
+  - {fileID: 600661170}
   - {fileID: 600661146}
   - {fileID: 600661145}
   - {fileID: 600661163}
@@ -14906,6 +14914,7 @@ MonoBehaviour:
   - {fileID: 600661141}
   - {fileID: 600661138}
   - {fileID: 600661140}
+  - {fileID: 600661169}
   - {fileID: 600661167}
   suppressAllAutoSelections: 0
 --- !u!114 &600661140
@@ -15214,7 +15223,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 554.4371
-    y: 479.85162
+    y: 481.30936
     width: 97.3761
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -15476,7 +15485,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 415.05225
-    y: 557.27026
+    y: 555.81256
     width: 87.90088
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -15744,6 +15753,78 @@ MonoBehaviour:
   stopVoiceover: 1
   waitForVO: 0
   setSayDialog: {fileID: 0}
+--- !u!114 &600661169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 577
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: dfaf3ee84ba09493e85f094676821aa1, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 0.5
+--- !u!114 &600661170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 576
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 6a72582c2ae9749b7bb2a1d27cebdc28, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 0
+--- !u!114 &600661171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 575
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: 32cd62e8d77ab4b5c979b9e5e92eb0d2, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
+--- !u!114 &600661172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902400ccc99b45d69ad01cb86b57d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 574
+  indentLevel: 0
+  musicClip: {fileID: 8300000, guid: dfaf3ee84ba09493e85f094676821aa1, type: 3}
+  atTime: 0
+  loop: 1
+  fadeDuration: 1
 --- !u!1001 &605724313
 PrefabInstance:
   m_ObjectHideFlags: 0
