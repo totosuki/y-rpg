@@ -4997,7 +4997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 600660564}
+  selectedFlowchart: {fileID: 1484637056}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -22733,7 +22733,6 @@ GameObject:
   - component: {fileID: 1484637060}
   - component: {fileID: 1484637059}
   - component: {fileID: 1484637058}
-  - component: {fileID: 1484637065}
   - component: {fileID: 1484637066}
   - component: {fileID: 1484637072}
   - component: {fileID: 1484637071}
@@ -24322,7 +24321,6 @@ MonoBehaviour:
   - {fileID: 1484637103}
   - {fileID: 1484636993}
   - {fileID: 1484636992}
-  - {fileID: 1484637065}
   - {fileID: 1484637090}
   description: 
   stepPause: 0
@@ -24437,21 +24435,6 @@ MonoBehaviour:
     stringVal: 
   startIndex: 0
   callMode: 1
---- !u!114 &1484637065
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484636991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4580f28dd8581476b810b38eea2f1316, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scope: 0
-  key: custom_text
-  value: 
 --- !u!114 &1484637066
 MonoBehaviour:
   m_ObjectHideFlags: 2
