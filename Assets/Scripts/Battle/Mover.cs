@@ -43,7 +43,13 @@ public class Mover : MonoBehaviour {
     }
 
     private void MoveGameObject(Vector2 pos) {
-        //入力されたオブジェクトのRendererを全て取得し、さらにそのRendererに設定されている全Materialの色を変える
         rectTransform.anchoredPosition = defaultPos + pos;
+    }
+
+    public void Init()
+    {
+        MoveGameObject(defaultPos);
+        startMove = false;
+        t = 0f;
     }
 }
