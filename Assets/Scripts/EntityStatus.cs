@@ -8,6 +8,16 @@ public class EntityStatus : MonoBehaviour {
 
     public void SetName(string name)
     {
-        this._name = name;
+        _name = name;
+    }
+
+    public void SetLv(int _lv)
+    {
+        lv = _lv;
+    }
+
+    public void SetHp(int _hp)
+    {
+        hp = _hp;
     }
 }
