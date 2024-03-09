@@ -53,8 +53,9 @@ public class BattleManager : MonoBehaviour
         int playerMaxHp = playerEntityStatus.hp;
         int enemyMaxHp = enemyEntityStatus.hp;
         // Player
+        string player_name = flowchart.GetStringVariable("_player_name");
         playerStatus.UpdateHp(playerMaxHp, playerMaxHp);
-        playerStatus.UpdateName(playerEntityStatus._name, playerEntityStatus.lv);
+        playerStatus.UpdateName(player_name, playerEntityStatus.lv);
         // Enemy
         enemyStatus.UpdateHp(enemyMaxHp, enemyMaxHp);
         enemyStatus.UpdateName(enemyEntityStatus._name, enemyEntityStatus.lv);
@@ -63,7 +64,6 @@ public class BattleManager : MonoBehaviour
         enemySetting = enemy.GetComponent<EnemySetting>();
         SetBattleConfigByEnemySetting(enemySetting);
 
-        SetFungusVariables();
         ToggleBattleModeTo(true);
     }
 
@@ -84,11 +84,9 @@ public class BattleManager : MonoBehaviour
         bool isCritical = attackManager.IsCritical();
         // ATK ハードコードしてます
         int damage = CalculateDamage(3, isCritical);
+        // 攻撃結果の表示用の情報を登録
         flowchart.SetIntegerVariable("damage", (int)damage);
-
-        // custom_textを編集
-        string customText = "{$player_name}の攻撃！\n" + (isCritical ? "クリティカル！" : "") + "{$enemy_name}に{$damage}ダメージ！";
-        flowchart.SetStringVariable("custom_text", customText);
+        flowchart.SetBooleanVariable("is_critical", isCritical);
 
         // この攻撃で相手を倒せるかどうか
         if (enemyEntity.hp - damage <= 0)
@@ -159,11 +157,6 @@ public class BattleManager : MonoBehaviour
         // Enemyからバトルの設定（主にAttackManager）を適用する
         attackManager.animationCurve = enemySetting.animationCurve;
         attackManager.duration = enemySetting.duration;
-    }
-
-    public void SetFungusVariables()
-    {
-        flowchart.SetStringVariable("player_name", playerEntityStatus._name);
     }
 
     private void BattleEndFlag(bool flag)
