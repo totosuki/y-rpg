@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1484637056}
+  selectedFlowchart: {fileID: 600660564}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -5964,6 +5964,7 @@ GameObject:
   - component: {fileID: 600661230}
   - component: {fileID: 600661229}
   - component: {fileID: 600661231}
+  - component: {fileID: 600661232}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -5996,9 +5997,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600661202}
+  - {fileID: 600661027}
   selectedCommands:
-  - {fileID: 600661231}
+  - {fileID: 600661232}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -12110,6 +12111,7 @@ MonoBehaviour:
   - {fileID: 600661056}
   - {fileID: 600661035}
   - {fileID: 600661049}
+  - {fileID: 600661232}
   - {fileID: 600661047}
   - {fileID: 600661048}
   - {fileID: 600661050}
@@ -17296,7 +17298,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &600661231
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -17446,6 +17448,51 @@ MonoBehaviour:
   vector3Data:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
+--- !u!114 &600661232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 638
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 692686171}
+  targetComponentAssemblyName: XPBar, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: XPBar
+  targetMethod: UpdateLv
+  targetMethodText: 'UpdateLv (Single): Void'
+  methodParameters:
+  - objValue:
+      typeAssemblyname: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
+        PublicKeyToken=b77a5c561934e089
+      typeFullname: System.Single
+      intValue: 0
+      boolValue: 0
+      floatValue: 20.5
+      stringValue: 
+      colorValue: {r: 0, g: 0, b: 0, a: 0}
+      gameObjectValue: {fileID: 0}
+      materialValue: {fileID: 0}
+      objectValue: {fileID: 0}
+      spriteValue: {fileID: 0}
+      textureValue: {fileID: 0}
+      vector2Value: {x: 0, y: 0}
+      vector3Value: {x: 0, y: 0, z: 0}
+    variableKey: 
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1001 &605724313
 PrefabInstance:
   m_ObjectHideFlags: 0
