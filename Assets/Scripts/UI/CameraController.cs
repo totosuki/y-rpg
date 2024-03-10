@@ -1,7 +1,17 @@
 using UnityEngine;
 
 public class CameraController : MonoBehaviour {
+
+    [SerializeField] private float cameraSize;
+
     private bool opening;
+    private Camera _camera;
+
+    void Start()
+    {
+        _camera = GetComponent<Camera>();
+        SetCameraSize(cameraSize);
+    }
 
     void Update() {
         if (opening) ScrollMap();
@@ -12,6 +22,7 @@ public class CameraController : MonoBehaviour {
         // オブジェクトを追従させる
         transform.parent = targetObject.transform;
         transform.localPosition = new Vector3(0, 0, -10);
+        SetCameraSize(cameraSize);
     }
 
     void ScrollMap()
@@ -31,5 +42,10 @@ public class CameraController : MonoBehaviour {
     public void StopScroll()
     {
         opening = false;
+    }
+
+    void SetCameraSize(float size)
+    {
+        _camera.orthographicSize = size;
     }
 }

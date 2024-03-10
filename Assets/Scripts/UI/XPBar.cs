@@ -12,14 +12,18 @@ public class XPBar : MonoBehaviour {
     void Start() {
         sliderManager = GetComponentInChildren<SliderManager>();
         lvText = GetComponentInChildren<TMP_Text>();
+
+        sliderManager.SetMaxValue(10);
     }
 
-    void Update() {
-        // レベルの表示を更新
-        lvText.text = $"Lv.{level}";
+    // 10.5のように少数で指定してXPバーを調整できる
+    public void UpdateLv(float lv)
+    {
+        int lv_int = Mathf.FloorToInt(lv);
+        float lv_r = lv - lv_int;
 
-        // Sliderを更新
-        sliderManager.SetMaxValue(maxXp);
-        sliderManager.SetValue(currentXp);
+        lvText.text = $"Lv.{lv_int}";
+        sliderManager.SetValue(Mathf.FloorToInt(lv_r * 10));
+
     }
 }

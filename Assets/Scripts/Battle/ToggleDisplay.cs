@@ -4,9 +4,9 @@ public class ToggleDisplay : MonoBehaviour {
     public float waitDuration;
     public bool display;
 
-    public void InvokeToggle() {
+    public void InvokeToggle(float duration) {
         gameObject.SetActive(!display);
-        Invoke("Toggle", waitDuration);
+        Invoke("Toggle", duration);
     }
 
     private void Toggle() {
