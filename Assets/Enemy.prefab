@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43dfaf4207fbe4a808e9923a6756bfa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 1
+  interactable: 0
   fireOnCollision: 0
   onInteract:
     m_PersistentCalls:
