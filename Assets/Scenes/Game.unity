@@ -5232,7 +5232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1484637056}
+  selectedFlowchart: {fileID: 600660564}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -6766,6 +6766,7 @@ GameObject:
   - component: {fileID: 600661925}
   - component: {fileID: 600661924}
   - component: {fileID: 600661926}
+  - component: {fileID: 600661927}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -6798,9 +6799,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600661747}
+  - {fileID: 600660604}
   selectedCommands:
-  - {fileID: 600661720}
+  - {fileID: 600660611}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -7584,6 +7585,7 @@ MonoBehaviour:
   commandList:
   - {fileID: 600660611}
   - {fileID: 600660831}
+  - {fileID: 600661927}
   suppressAllAutoSelections: 0
 --- !u!114 &600660605
 MonoBehaviour:
@@ -34489,7 +34491,7 @@ MonoBehaviour:
   isSavePoint: 0
 --- !u!114 &600661923
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -34517,7 +34519,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &600661924
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -34541,7 +34543,7 @@ MonoBehaviour:
   targetColorOLD: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &600661925
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -34562,7 +34564,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &600661926
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -34581,6 +34583,27 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 1
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &600661927
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 050fb9e6e72f442b3b883da8a965bdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1402
+  indentLevel: 0
+  targetFlowchart: {fileID: 0}
+  targetBlock: {fileID: 600660600}
+  startLabel:
+    stringRef: {fileID: 0}
+    stringVal: 
+  startIndex: 0
+  callMode: 0
 --- !u!1001 &605724313
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45618,10 +45641,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1484637055}
-  selectedCommands:
-  - {fileID: 1484637127}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 1484636999}
   - {fileID: 1484636997}
@@ -48211,7 +48232,7 @@ MonoBehaviour:
   canMove: 0
 --- !u!114 &1484637127
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
