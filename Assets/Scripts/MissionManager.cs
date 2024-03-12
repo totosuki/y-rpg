@@ -70,7 +70,7 @@ public class MissionManager : MonoBehaviour
 
         while (t < 1f)
         {
-            t += 0.005f;
+            t += 0.01f;
             canvasGroup.alpha = t;
             transform.localPosition += new Vector3(t/25, 0);
 
