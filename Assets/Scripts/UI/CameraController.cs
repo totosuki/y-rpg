@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour {
         SetCameraSize(cameraSize);
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (opening) ScrollMap();
     }
 
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour {
             StopScroll();
         }
 
-        transform.position += new Vector3(0.0f, 0.001f, 0.0f);
+        transform.position += new Vector3(0.0f, 0.007f, 0.0f);
     }
 
     public void StartScroll()
