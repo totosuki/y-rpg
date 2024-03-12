@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour {
 
     void InitInput() {
         _inputField.text = "";
+        isInputFinished = false;
     }
 
     public IEnumerator StartInput(Action callback) {
