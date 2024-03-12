@@ -5113,7 +5113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 600660564}
+  selectedFlowchart: {fileID: 1484637056}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -43628,6 +43628,7 @@ GameObject:
   - component: {fileID: 1484637123}
   - component: {fileID: 1484637125}
   - component: {fileID: 1484637124}
+  - component: {fileID: 1484637126}
   m_Layer: 0
   m_Name: BattleFlowchart
   m_TagString: Untagged
@@ -45064,7 +45065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 232.2033
+    x: 230.61473
     y: 99.211655
     width: 131.01674
     height: 40
@@ -45130,7 +45131,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 103.30528
-    y: 99.51101
+    y: 97.92245
     width: 100.83403
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -45179,10 +45180,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1484637055}
-  selectedCommands:
-  - {fileID: 1484637089}
+  selectedBlocks: []
+  selectedCommands: []
   variables:
   - {fileID: 1484636999}
   - {fileID: 1484636997}
@@ -45280,6 +45279,7 @@ MonoBehaviour:
   eventHandler: {fileID: 1484637059}
   commandList:
   - {fileID: 1484637087}
+  - {fileID: 1484637126}
   - {fileID: 1484637072}
   - {fileID: 1484637071}
   - {fileID: 1484637070}
@@ -45737,7 +45737,7 @@ MonoBehaviour:
   logType: 0
   logMessage:
     stringRef: {fileID: 0}
-    stringVal: recieved
+    stringVal: battle start
 --- !u!114 &1484637088
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -47754,6 +47754,21 @@ MonoBehaviour:
   vector3Data:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
+--- !u!114 &1484637126
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484636991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15d180feb4fb4f17a10b40b8de52997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 395
+  indentLevel: 0
+  canMove: 0
 --- !u!1 &1485817371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2094827918355497756, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
