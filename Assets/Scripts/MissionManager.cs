@@ -24,12 +24,30 @@ public class MissionManager : MonoBehaviour
     private GameManager gameManager;
     private CanvasGroup canvasGroup;
 
+    private float t;
+    private bool fadeFlag;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         canvasGroup = GetComponent<CanvasGroup>();
 
         gameManager.onTurnUpdate.AddListener(ListenTurnUpdate);
+    }
+
+    void FixedUpdate()
+    {
+        if (fadeFlag)
+        {
+            t += 0.05f;
+            canvasGroup.alpha = t;
+            transform.localPosition += new Vector3(t/25, 0);
+
+            if (t >= 1f)
+            {
+                fadeFlag = false;
+            }
+        }
     }
 
     public void ShowMission(int turn)
@@ -53,7 +71,7 @@ public class MissionManager : MonoBehaviour
             missionDescription.text = "";
         }
 
-        StartCoroutine(FadeIn());
+        FadeInAnimation();
     }
 
     // ターン更新に反応する処理
@@ -63,18 +81,10 @@ public class MissionManager : MonoBehaviour
         ShowMission(turn);
     }
 
-    public IEnumerator FadeIn()
+    public void FadeInAnimation()
     {
-        float t = 0f;
+        t = 0f;
         canvasGroup.alpha = t;
-
-        while (t < 1f)
-        {
-            t += 0.01f;
-            canvasGroup.alpha = t;
-            transform.localPosition += new Vector3(t/25, 0);
-
-            yield return null;
-        }
+        fadeFlag = true;
     }
 }
