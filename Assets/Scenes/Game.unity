@@ -5232,7 +5232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 600660564}
+  selectedFlowchart: {fileID: 1484637056}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -6800,7 +6800,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 600661747}
   selectedCommands:
-  - {fileID: 600661903}
+  - {fileID: 600661720}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -44065,6 +44065,7 @@ GameObject:
   - component: {fileID: 1484637125}
   - component: {fileID: 1484637124}
   - component: {fileID: 1484637126}
+  - component: {fileID: 1484637127}
   m_Layer: 0
   m_Name: BattleFlowchart
   m_TagString: Untagged
@@ -45502,7 +45503,7 @@ MonoBehaviour:
   nodeRect:
     serializedVersion: 2
     x: 230.61473
-    y: 99.211655
+    y: 97.71532
     width: 127.8097
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -45582,6 +45583,7 @@ MonoBehaviour:
   - {fileID: 1484637101}
   - {fileID: 1484637102}
   - {fileID: 1484637069}
+  - {fileID: 1484637127}
   - {fileID: 1484637100}
   - {fileID: 1484637099}
   - {fileID: 1484637098}
@@ -45617,8 +45619,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1484637030}
-  selectedCommands: []
+  - {fileID: 1484637055}
+  selectedCommands:
+  - {fileID: 1484637127}
   variables:
   - {fileID: 1484636999}
   - {fileID: 1484636997}
@@ -48206,6 +48209,34 @@ MonoBehaviour:
   itemId: 395
   indentLevel: 0
   canMove: 0
+--- !u!114 &1484637127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484636991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688e35811870d403f9e2b1ab2a699d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 396
+  indentLevel: 0
+  description: 
+  targetObject: {fileID: 1693566791}
+  targetComponentAssemblyName: Fader, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  targetComponentFullname: UnityEngine.Component[]
+  targetComponentText: Fader
+  targetMethod: Init
+  targetMethodText: 'Init (): Void'
+  methodParameters: []
+  saveReturnValue: 0
+  returnValueVariableKey: 
+  returnValueType: System.Void
+  showInherited: 0
+  callMode: 0
 --- !u!1 &1485817371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2094827918355497756, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
