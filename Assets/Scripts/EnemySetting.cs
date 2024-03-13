@@ -4,5 +4,6 @@ using UnityEngine;
 public class EnemySetting : MonoBehaviour {
     public float duration;
     public AnimationCurve animationCurve;
+    public Sprite sprite;
     public float spriteSize;
 }
