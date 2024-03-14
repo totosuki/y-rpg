@@ -86,6 +86,9 @@ public class MessageTrigger : InteractionTrigger
             return false;
         });
 
+        // 再び会話に入らないように一瞬待機
+        yield return new WaitForSeconds(0.5f);
+        
         // 会話終了時にコールバック
         callback();
     }
