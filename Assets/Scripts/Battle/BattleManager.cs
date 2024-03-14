@@ -68,8 +68,8 @@ public class BattleManager : MonoBehaviour
         SetBattleConfigByEnemySetting(enemySetting);
 
         // Enemyの見た目を設定する
-        Image enemyImage = enemyImageObject.GetComponent<Image>();
-        enemyImage.sprite = enemy.GetComponent<SpriteRenderer>().sprite;
+        // これでは動かない
+        enemyImageObject.GetComponent<Image>().sprite = enemy.GetComponent<SpriteRenderer>().sprite;
         // 画像のサイズを調整する
         float size = enemySetting.spriteSize;
         enemyImageObject.transform.localScale = new Vector3(size, size, size);
