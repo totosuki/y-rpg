@@ -7,7 +7,7 @@ public class InteractionTrigger : MonoBehaviour
     [SerializeField] protected bool interactable;
 
     [Tooltip("当たり判定内に入っただけでイベントを発火するか")]
-    [SerializeField] protected bool fireOnCollision;
+    public bool fireOnCollision;
 
     // インタラクト時に発動されるイベント
     public UnityEvent onInteract = new UnityEvent();

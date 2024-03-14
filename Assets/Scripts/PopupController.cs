@@ -13,8 +13,8 @@ public class PopupController : MonoBehaviour
 
     void Update()
     {
-        // 会話可能圏内にいるかつメッセージを持っている時、ポップアップを表示
-        if (messageTrigger.CanInteract() && messageTrigger.message != "")
+        // 会話可能圏内にいる かつ メッセージを持っている かつ 会話中でない かつ !fireOnCollision の時、ポップアップを表示
+        if (messageTrigger.CanInteract() && messageTrigger.message != "" && !messageTrigger.isTalking && !messageTrigger.fireOnCollision)
         {
             spriteRenderer.enabled = true;
         }
