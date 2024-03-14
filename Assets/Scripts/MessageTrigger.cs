@@ -12,6 +12,9 @@ public class MessageTrigger : InteractionTrigger
     [ConditionalDisableInInspector(nameof(isEnemy), false, conditionalInvisible: true)]
     public string message;
 
+    [HideInInspector]
+    public bool isTalking;
+
     // Ememyのみの設定 バトル終了時のコールバック用のメッセージ
     [ConditionalDisableInInspector(nameof(isEnemy), true, conditionalInvisible: true)]
     public string onBattleEndMessage;
@@ -101,10 +104,13 @@ public class MessageTrigger : InteractionTrigger
 
         playerController.DisableCanMove();
 
+        isTalking = true;
+
         StartCoroutine(SendMessage(() => {
             // コールバック
             playerController.EnableCanMove();
             interacted = false;
+            isTalking = false;
         }));
     }
 

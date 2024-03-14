@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac00b1f4ac50d436cb69d768d67770f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionTrigger: {fileID: 95539675283437128}
+  messageTrigger: {fileID: 95539675283437128}
 --- !u!1 &6964823280493614639
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
         m_CallState: 2
   isEnemy: 0
   message: 
+  onBattleEndMessage: 
 --- !u!58 &6429774796278550237
 CircleCollider2D:
   m_ObjectHideFlags: 0
