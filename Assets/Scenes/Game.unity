@@ -7677,6 +7677,7 @@ GameObject:
   - component: {fileID: 600661960}
   - component: {fileID: 600661961}
   - component: {fileID: 600661959}
+  - component: {fileID: 600661962}
   m_Layer: 0
   m_Name: Flowchart
   m_TagString: Untagged
@@ -7697,7 +7698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 352.5279, y: -65.67432}
+  scrollPos: {x: 352.5279, y: -79.48331}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 543
@@ -7709,9 +7710,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600660981}
+  - {fileID: 600660984}
   selectedCommands:
-  - {fileID: 600660982}
+  - {fileID: 600661025}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -12209,6 +12210,7 @@ MonoBehaviour:
   - {fileID: 600661026}
   - {fileID: 600661043}
   - {fileID: 600661025}
+  - {fileID: 600661962}
   - {fileID: 600661033}
   - {fileID: 600661046}
   - {fileID: 600661030}
@@ -13639,7 +13641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 430
   indentLevel: 0
-  storyText: "{$player_name}\u3001\u96C6\u4E2D\u3057\u3066\u3001\u6575\u306B\u5408\u308F\u305B\u3066\u601D\u3044\u3063\u304D\u308A\u5263\u3092\u632F\u308B\u3093\u3060\uFF01\n\u30AD\u30DF\u306A\u3089\u3067\u304D\u308B\uFF01\u3042\u3068\u306F\u983C\u3093\u3060\uFF01"
+  storyText: "{$player_name}\u3001\u96C6\u4E2D\u3057\u3066\u3001\u6575\u306B\u5408\u308F\u305B\u3066\u601D\u3044\u3063\u304D\u308A\u5263\u3092\u632F\u308B\u3093\u3060\uFF01{w=0.5}\n\u50D5\u306B\u306F\u3088\u304F\u5206\u304B\u3089\u306A\u3044\u3093\u3060\u3051\u3069\u3001\u300C\u30AF\u30EA\u30C3\u30AF\u300D\u3059\u308B\u3068\u3044\u3044\u3089\u3057\u3044\u305E\uFF01"
   description: 
   character: {fileID: 1626306531}
   portrait: {fileID: 0}
@@ -13666,7 +13668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 429
   indentLevel: 0
-  storyText: "\u51FA\u305F\u306A\u30E2\u30F3\u30B9\u30BF\u30FC\uFF01\u3042\u306E\u3001\u3042\u3001\u3042\n\u3059\u307E\u306D\u3048\u3001\u4FFA\u3055\u3001\u6226\u3048\u306D\u3048\u3093\u3060\u308F\u3002"
+  storyText: "\u51FA\u305F\u306A\u30E2\u30F3\u30B9\u30BF\u30FC\uFF01\u3042\u306E\u3001\u3042\u3001\u3042\n\u3059\u307E\u306A\u3044\u3001\u50D5\u3001\u6226\u3048\u306A\u3044\u3093\u3060\u3002"
   description: 
   character: {fileID: 1626306531}
   portrait: {fileID: 0}
@@ -36320,6 +36322,33 @@ MonoBehaviour:
   parentBlock: {fileID: 600661960}
   suppressBlockAutoSelect: 0
   message: kanban
+--- !u!114 &600661962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600660563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 1435
+  indentLevel: 0
+  storyText: "\u30AD\u30DF\u306A\u3089\u3067\u304D\u308B\uFF01\u3042\u3068\u306F\u983C\u3093\u3060\uFF01"
+  description: 
+  character: {fileID: 1626306531}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 0}
 --- !u!1 &621899231
 GameObject:
   m_ObjectHideFlags: 0
