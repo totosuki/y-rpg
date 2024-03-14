@@ -69,7 +69,7 @@ public class BattleManager : MonoBehaviour
 
         // Enemyの見た目を設定する
         // これでは動かない
-        enemyImageObject.GetComponent<Image>().sprite = enemySetting.sprite;
+        enemyImageObject.GetComponent<Image>().sprite = enemy.GetComponent<SpriteRenderer>().sprite;
         // 画像のサイズを調整する
         float size = enemySetting.spriteSize;
         enemyImageObject.transform.localScale = new Vector3(size, size, size);
