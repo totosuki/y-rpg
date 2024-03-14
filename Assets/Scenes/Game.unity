@@ -200,7 +200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 301335084432767341, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
       propertyPath: subtitle
-      value: description
+      value: "- \u9759 -"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d24c6d558d7bb458189145bf6ee638ca, type: 3}
