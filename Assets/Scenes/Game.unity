@@ -5978,7 +5978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1484637056}
+  selectedFlowchart: {fileID: 600660564}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -7697,7 +7697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 51.031883, y: -122.060905}
+  scrollPos: {x: 352.5279, y: -65.67432}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 543
@@ -7709,9 +7709,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 600660703}
+  - {fileID: 600660981}
   selectedCommands:
-  - {fileID: 600660959}
+  - {fileID: 600660982}
   variables:
   - {fileID: 600660602}
   - {fileID: 600660922}
@@ -12138,7 +12138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 387
   indentLevel: 0
-  storyText: "\u307E\u305A\u306F\u4E00\u968E\u3092\u3086\u3063\u304F\u308A\u63A2\u691C\u3057\u3066\u307F\u306A\uFF01"
+  storyText: "\u5317\u897F\u306E\u68EE\u3067\u5F85\u3063\u3066\u308B\u3088\uFF01"
   description: 
   character: {fileID: 1626306531}
   portrait: {fileID: 0}
@@ -36253,7 +36253,7 @@ MonoBehaviour:
   callMode: 0
 --- !u!114 &600661959
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -36280,7 +36280,7 @@ MonoBehaviour:
   setSayDialog: {fileID: 0}
 --- !u!114 &600661960
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -36307,7 +36307,7 @@ MonoBehaviour:
   suppressAllAutoSelections: 0
 --- !u!114 &600661961
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
