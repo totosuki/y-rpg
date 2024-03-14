@@ -5978,7 +5978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 600660564}
+  selectedFlowchart: {fileID: 1484637056}
 --- !u!4 &503070070
 Transform:
   m_ObjectHideFlags: 1
@@ -46481,7 +46481,6 @@ GameObject:
   - component: {fileID: 1484637066}
   - component: {fileID: 1484637072}
   - component: {fileID: 1484637071}
-  - component: {fileID: 1484637070}
   - component: {fileID: 1484637069}
   - component: {fileID: 1484637081}
   - component: {fileID: 1484637079}
@@ -46529,10 +46528,11 @@ GameObject:
   - component: {fileID: 1484637123}
   - component: {fileID: 1484637125}
   - component: {fileID: 1484637124}
-  - component: {fileID: 1484637126}
   - component: {fileID: 1484637127}
   - component: {fileID: 1484637128}
   - component: {fileID: 1484637129}
+  - component: {fileID: 1484637130}
+  - component: {fileID: 1484637131}
   m_Layer: 0
   m_Name: BattleFlowchart
   m_TagString: Untagged
@@ -48036,7 +48036,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 103.30528
+    x: 104.93449
     y: 99.55165
     width: 102.13449
     height: 40
@@ -48087,9 +48087,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1484637055}
+  - {fileID: 1484637060}
   selectedCommands:
-  - {fileID: 1484637069}
+  - {fileID: 1484637130}
   variables:
   - {fileID: 1484636999}
   - {fileID: 1484636997}
@@ -48187,10 +48187,10 @@ MonoBehaviour:
   eventHandler: {fileID: 1484637059}
   commandList:
   - {fileID: 1484637087}
-  - {fileID: 1484637126}
   - {fileID: 1484637072}
   - {fileID: 1484637071}
-  - {fileID: 1484637070}
+  - {fileID: 1484637130}
+  - {fileID: 1484637131}
   - {fileID: 1484637058}
   suppressAllAutoSelections: 0
 --- !u!114 &1484637061
@@ -48260,24 +48260,6 @@ MonoBehaviour:
   returnValueType: System.Void
   showInherited: 0
   callMode: 0
---- !u!114 &1484637070
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484636991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 304
-  indentLevel: 0
-  _duration:
-    floatRef: {fileID: 0}
-    floatVal: 1
-  durationOLD: 0
 --- !u!114 &1484637071
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -50641,21 +50623,6 @@ MonoBehaviour:
   vector3Data:
     vector3Ref: {fileID: 0}
     vector3Val: {x: 0, y: 0, z: 0}
---- !u!114 &1484637126
-MonoBehaviour:
-  m_ObjectHideFlags: 2
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1484636991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15d180feb4fb4f17a10b40b8de52997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemId: 395
-  indentLevel: 0
-  canMove: 0
 --- !u!114 &1484637127
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -50722,6 +50689,39 @@ MonoBehaviour:
     booleanRef: {fileID: 0}
     booleanVal: 0
   targetGameObjectOLD: {fileID: 0}
+--- !u!114 &1484637130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484636991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3315ad2ebb85443909a1203d56d9344e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 400
+  indentLevel: 0
+  _duration:
+    floatRef: {fileID: 0}
+    floatVal: 1
+  durationOLD: 0
+--- !u!114 &1484637131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1484636991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15d180feb4fb4f17a10b40b8de52997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 401
+  indentLevel: 0
+  canMove: 0
 --- !u!1 &1485817371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2094827918355497756, guid: 4e68e039c00e2496fafda68cfbe3cb74, type: 3}
