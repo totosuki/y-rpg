@@ -86,6 +86,7 @@ MonoBehaviour:
       m_Calls: []
   isEnemy: 0
   message: 
+  onBattleEndMessage: 
 --- !u!114 &3753819723432344219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,4 +339,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac00b1f4ac50d436cb69d768d67770f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionTrigger: {fileID: 5712974382996569100}
+  messageTrigger: {fileID: 5712974382996569100}
