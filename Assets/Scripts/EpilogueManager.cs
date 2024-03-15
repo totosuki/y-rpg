@@ -15,6 +15,8 @@ public class EpilogueManager : MonoBehaviour
     [Header("エピローグのスクロールが終わる位置")]
     public float endPosition;
 
+    public GameObject QRImage;
+
     public void StartEpilogue()
     {
         Debug.Log("StartEpilogue");
@@ -34,5 +36,7 @@ public class EpilogueManager : MonoBehaviour
             if (position.y > endPosition) break; // ある程度までスクロールしたら終了
             yield return new WaitForSeconds(0.05f);
         }
+
+        QRImage.SetActive(true);
     }
 }
