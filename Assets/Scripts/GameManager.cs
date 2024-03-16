@@ -16,10 +16,10 @@ public class GameManager : MonoBehaviour
     {
         // 起動するたびにゲームをリスタート
         // 初期化後のみturn == 0になるため、turnで初期化されているかどうかを判断
-        // if (flowchart.GetIntegerVariable("turn") != 0)
-        // {
-        //     GameObject.Find("SaveMenu").GetComponent<SaveMenu>().Restart();
-        // }
+        if (flowchart.GetIntegerVariable("turn") != 0)
+        {
+            GameObject.Find("SaveMenu").GetComponent<SaveMenu>().Restart();
+        }
         
         player = GameObject.Find("Player");
     }
