@@ -9,6 +9,8 @@ public class MessageTrigger : InteractionTrigger
 {
     [SerializeField] private bool isEnemy;
 
+    [SerializeField] private bool dontChangeCanMove;
+
     [ConditionalDisableInInspector(nameof(isEnemy), false, conditionalInvisible: true)]
     public string message;
 
@@ -18,9 +20,6 @@ public class MessageTrigger : InteractionTrigger
     // Ememyのみの設定 バトル終了時のコールバック用のメッセージ
     [ConditionalDisableInInspector(nameof(isEnemy), true, conditionalInvisible: true)]
     public string onBattleEndMessage;
-
-    [SerializeField]
-    private bool dontChangeCanMove;
 
     private Flowchart flowchart;
     private PlayerController playerController;
@@ -115,7 +114,10 @@ public class MessageTrigger : InteractionTrigger
 
         isTalking = true;
 
+        print($"isEnemy: {isEnemy}, dontChangeCanMove: {dontChangeCanMove}");
+
         StartCoroutine(SendMessage(() => {
+            print($"isEnemy: {isEnemy}, dontChangeCanMove: {dontChangeCanMove}");
             // コールバック
             if (!dontChangeCanMove)
             {
@@ -135,5 +137,10 @@ public class MessageTrigger : InteractionTrigger
     public void SetFireOnCollision(bool flag)
     {
         fireOnCollision = flag;
+    }
+
+    public void SetDontChangeCanMove(bool flag)
+    {
+        dontChangeCanMove = flag;
     }
 }
