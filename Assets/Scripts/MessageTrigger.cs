@@ -113,11 +113,8 @@ public class MessageTrigger : InteractionTrigger
         }
 
         isTalking = true;
-
-        print($"isEnemy: {isEnemy}, dontChangeCanMove: {dontChangeCanMove}");
-
+        
         StartCoroutine(SendMessage(() => {
-            print($"isEnemy: {isEnemy}, dontChangeCanMove: {dontChangeCanMove}");
             // コールバック
             if (!dontChangeCanMove)
             {
