@@ -19,6 +19,9 @@ public class MessageTrigger : InteractionTrigger
     [ConditionalDisableInInspector(nameof(isEnemy), true, conditionalInvisible: true)]
     public string onBattleEndMessage;
 
+    [SerializeField]
+    private bool dontChangeCanMove;
+
     private Flowchart flowchart;
     private PlayerController playerController;
     private bool dontstop;
@@ -105,13 +108,19 @@ public class MessageTrigger : InteractionTrigger
             flowchart.SetStringVariable("on_end_message", onBattleEndMessage);
         }
 
-        playerController.DisableCanMove();
+        if (!dontChangeCanMove)
+        {
+            playerController.DisableCanMove();
+        }
 
         isTalking = true;
 
         StartCoroutine(SendMessage(() => {
             // コールバック
-            playerController.EnableCanMove();
+            if (!dontChangeCanMove)
+            {
+                playerController.EnableCanMove();
+            }
             interacted = false;
             isTalking = false;
         }));
